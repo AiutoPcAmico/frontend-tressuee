@@ -1,16 +1,13 @@
 import { useContext } from "react";
 import { DarkModeContext } from "../theme/DarkModeContext";
-import { useNavigate } from "react-router-dom";
 
 function UnderNavBar({ selezionato, setSelezionato }) {
   const { darkMode } = useContext(DarkModeContext);
-  const navigate = useNavigate();
 
 
 
   const click = (bott) => {
     setSelezionato(bott);
-    navigate(`/${bott}`)
   };
 
   return (
