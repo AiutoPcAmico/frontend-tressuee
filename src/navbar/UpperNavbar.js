@@ -36,9 +36,9 @@ function UpperNavbar({ selezionato, setSelezionato }) {
             className={
               selezionato === "account"
                 ? "btn btn-outline-success " +
-                  (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
+                (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
                 : "btn btn-outline-success " +
-                  (darkMode ? "nav1buttonl" : "nav1button")
+                (darkMode ? "nav1buttonl" : "nav1button")
             }
             onClick={() => {
               click("account");
@@ -52,9 +52,9 @@ function UpperNavbar({ selezionato, setSelezionato }) {
             className={
               selezionato === "ordini"
                 ? "btn btn-outline-success " +
-                  (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
+                (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
                 : "btn btn-outline-success " +
-                  (darkMode ? "nav1buttonl" : "nav1button")
+                (darkMode ? "nav1buttonl" : "nav1button")
             }
             onClick={() => {
               click("ordini");
@@ -69,9 +69,9 @@ function UpperNavbar({ selezionato, setSelezionato }) {
             className={
               selezionato === "cart"
                 ? "btn btn-outline-success " +
-                  (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
+                (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
                 : "btn btn-outline-success " +
-                  (darkMode ? "nav1buttonl" : "nav1button")
+                (darkMode ? "nav1buttonl" : "nav1button")
             }
             onClick={() => {
               click("cart");
