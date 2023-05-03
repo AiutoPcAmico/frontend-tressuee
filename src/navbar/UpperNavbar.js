@@ -17,7 +17,10 @@ function UpperNavbar({ selezionato, setSelezionato }) {
         (darkMode ? "upper-navbar-dark" : "upper-navbar-light")
       }
     >
-      <a className={"navbar-brand " + (!darkMode ? "text-light" : "")} href="#">
+      <a
+        className={"navbar-brand " + (darkMode ? "testolight" : "testodark")}
+        href="#"
+      >
         <img
           src={logo}
           width="30"

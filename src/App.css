@@ -3,11 +3,11 @@
 .App-background {
 
   min-height: 100vh;
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  */font-size: calc(10px + 2vmin);
 }
 
 .light-mode {
@@ -85,4 +85,19 @@
   background-color: #39813f ;
   color : #f1f4dc ;
   border-color: #f1f4dc ;
+}
+
+.testolight{
+  color : #244e23 !important ;
+
+}
+
+.testodark{
+  color : #f1f4dc !important;
+ 
+}
+
+.homePage-structure{
+  display: flex;
+  flex-direction: column;
 }

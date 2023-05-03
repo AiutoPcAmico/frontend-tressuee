@@ -1,9 +1,10 @@
-import logo from "./img/logo.png";
 import "./App.css";
 import { useContext, useState } from "react";
 import { DarkModeContext } from "./theme/DarkModeContext";
 import { UpperNavbar } from "./navbar/upperNavbar.js";
 import { UnderNavBar } from "./navbar/underNavbar.js";
+import { HomePages } from "./components/homePages.js";
+import { ContactForm } from "./components/ContactForm.js";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -35,13 +36,14 @@ Search
       ></UnderNavBar>
 
       <div className="App">
-        <header
+        <div
           className={
             "App-background " + (darkMode ? "light-mode" : "dark-mode")
           }
         >
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
+          <HomePages></HomePages>
+          <ContactForm />
+        </div>
       </div>
     </div>
   );
