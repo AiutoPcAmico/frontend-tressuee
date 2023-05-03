@@ -2,11 +2,12 @@ import logo from "./img/logo.png";
 import "./App.css";
 import { useContext, useState } from "react";
 import { DarkModeContext } from "./theme/DarkModeContext";
-import { UpperNavbar } from "./navbar/UpperNavbar.js";
-import { SecondNavbar } from "./navbar/SecondNavbar.js";
+import { UpperNavbar } from "./navbar/upperNavbar.js";
+import { UnderNavBar } from "./navbar/underNavbar.js";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+  const [selezionato, setSelezionato] = useState("home");
 
   /*
 <i class="bi bi-incognito"></i>	se non loggato
@@ -23,8 +24,15 @@ Search
 
   return (
     <div>
-      <UpperNavbar></UpperNavbar>
-      <SecondNavbar></SecondNavbar>
+      <UpperNavbar
+        selezionato={selezionato}
+        setSelezionato={setSelezionato}
+      ></UpperNavbar>
+
+      <UnderNavBar
+        selezionato={selezionato}
+        setSelezionato={setSelezionato}
+      ></UnderNavBar>
 
       <div className="App">
         <header

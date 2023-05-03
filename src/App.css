@@ -30,6 +30,19 @@
 }
 
 
+.upper-navbar{
+  flex-direction: row;
+}
+
+.upper-navbar-light{
+  background-color: #39813f;
+}
+
+.upper-navbar-dark{
+  background-color: #c9de8c;
+}
+
+
 /*dark mode*/
 .nav1button{
   background-color: #77ae59;

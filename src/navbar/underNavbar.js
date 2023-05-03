@@ -1,13 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { DarkModeContext } from "../theme/DarkModeContext";
 
-function SecondNavbar() {
-  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
-  const [selezionato, setSelezionato] = useState("home");
+function UnderNavBar({ selezionato, setSelezionato }) {
+  const { darkMode } = useContext(DarkModeContext);
 
   const click = (bott) => {
     setSelezionato(bott);
-    //if(bott=='home')
   };
 
   return (
@@ -58,6 +56,7 @@ function SecondNavbar() {
               </button>
             </a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#">
               <button
@@ -77,6 +76,7 @@ function SecondNavbar() {
               </button>
             </a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#">
               <button
@@ -140,4 +140,4 @@ function SecondNavbar() {
   );
 }
 
-export { SecondNavbar };
+export { UnderNavBar };
