@@ -1,11 +1,3 @@
-/* function Contacts() {
-  return <div>
-    
-
-  </div>;
-} 
-
-export default { Contacts }; */
 
 import React from "react";
 const ContactForm = () => {

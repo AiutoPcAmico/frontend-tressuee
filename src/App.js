@@ -1,10 +1,12 @@
 import "./App.css";
 import { useContext, useState } from "react";
 import { DarkModeContext } from "./theme/DarkModeContext";
-import { UpperNavbar } from "./navbar/upperNavbar.js";
 import { UnderNavBar } from "./navbar/underNavbar.js";
-import { HomePages } from "./components/homePages.js";
-import { ContactForm } from "./components/ContactForm.js";
+import { HomePages } from "./pages/homePages.js";
+import { ContactForm } from "./pages/ContactForm.js";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Error404 } from "./pages/error404";
+import { FirstNavbar } from "./navbar/firstNavbar";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -24,28 +26,33 @@ Search
   */
 
   return (
-    <div>
-      <UpperNavbar
+
+
+    <div
+      className={
+        "App App-background " + (darkMode ? "light-mode" : "dark-mode")
+      }
+    >
+      <FirstNavbar
         selezionato={selezionato}
         setSelezionato={setSelezionato}
-      ></UpperNavbar>
+      ></FirstNavbar>
 
       <UnderNavBar
         selezionato={selezionato}
         setSelezionato={setSelezionato}
       ></UnderNavBar>
 
-      <div className="App">
-        <div
-          className={
-            "App-background " + (darkMode ? "light-mode" : "dark-mode")
-          }
-        >
-          <HomePages></HomePages>
-          <ContactForm />
-        </div>
-      </div>
+
+      <Routes>
+
+        <Route index element={<HomePages />} />
+        <Route path="/contact" element={<ContactForm />} />
+        <Route path="/*" element={<Error404 />} />
+
+      </Routes>
     </div>
+
   );
 }
 

@@ -1,11 +1,16 @@
 import { useContext } from "react";
 import { DarkModeContext } from "../theme/DarkModeContext";
+import { useNavigate } from "react-router-dom";
 
 function UnderNavBar({ selezionato, setSelezionato }) {
   const { darkMode } = useContext(DarkModeContext);
+  const navigate = useNavigate();
+
+
 
   const click = (bott) => {
     setSelezionato(bott);
+    navigate(`/${bott}`)
   };
 
   return (
@@ -38,15 +43,15 @@ function UnderNavBar({ selezionato, setSelezionato }) {
 
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0 header_center">
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/">
               <button
                 type="button"
                 className={
                   selezionato === "home"
                     ? "btn btn-outline-success " +
-                      (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
+                    (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
                     : "btn btn-outline-success " +
-                      (darkMode ? "nav2buttonl" : "nav2button")
+                    (darkMode ? "nav2buttonl" : "nav2button")
                 }
                 onClick={() => {
                   click("home");
@@ -64,9 +69,9 @@ function UnderNavBar({ selezionato, setSelezionato }) {
                 className={
                   selezionato === "shop"
                     ? "btn btn-outline-success " +
-                      (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
+                    (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
                     : "btn btn-outline-success " +
-                      (darkMode ? "nav2buttonl" : "nav2button")
+                    (darkMode ? "nav2buttonl" : "nav2button")
                 }
                 onClick={() => {
                   click("shop");
@@ -84,9 +89,9 @@ function UnderNavBar({ selezionato, setSelezionato }) {
                 className={
                   selezionato === "mappa"
                     ? "btn btn-outline-success " +
-                      (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
+                    (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
                     : "btn btn-outline-success " +
-                      (darkMode ? "nav2buttonl" : "nav2button")
+                    (darkMode ? "nav2buttonl" : "nav2button")
                 }
                 onClick={() => {
                   click("mappa");
@@ -103,9 +108,9 @@ function UnderNavBar({ selezionato, setSelezionato }) {
                 className={
                   selezionato === "chi"
                     ? "btn btn-outline-success " +
-                      (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
+                    (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
                     : "btn btn-outline-success " +
-                      (darkMode ? "nav2buttonl" : "nav2button")
+                    (darkMode ? "nav2buttonl" : "nav2button")
                 }
                 onClick={() => {
                   click("chi");
@@ -116,15 +121,15 @@ function UnderNavBar({ selezionato, setSelezionato }) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/contact">
               <button
                 type="button"
                 className={
                   selezionato === "contatti"
                     ? "btn btn-outline-success " +
-                      (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
+                    (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
                     : "btn btn-outline-success " +
-                      (darkMode ? "nav2buttonl" : "nav2button")
+                    (darkMode ? "nav2buttonl" : "nav2button")
                 }
                 onClick={() => {
                   click("contatti");
