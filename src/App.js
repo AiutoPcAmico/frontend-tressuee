@@ -4,9 +4,11 @@ import { DarkModeContext } from "./theme/DarkModeContext";
 import { UnderNavBar } from "./navbar/underNavbar.js";
 import { HomePages } from "./pages/homePages.js";
 import { ContactForm } from "./pages/ContactForm.js";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { Error404 } from "./pages/error404";
 import { FirstNavbar } from "./navbar/firstNavbar";
+import { ListProducts } from "./pages/listProducts";
+import { TowersMap } from "./pages/towersMap";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -47,7 +49,10 @@ Search
       <Routes>
 
         <Route index element={<HomePages />} />
-        <Route path="/contact" element={<ContactForm />} />
+        <Route path="/home" element={<Navigate replace to="/" />} />
+        <Route path="/contacts" element={<ContactForm />} />
+        <Route path="/shop" element={<ListProducts />} />
+        <Route path="/maps" element={<TowersMap />} />
         <Route path="/*" element={<Error404 />} />
 
       </Routes>

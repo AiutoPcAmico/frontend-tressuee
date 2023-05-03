@@ -1,17 +1,9 @@
-import { useContext } from "react";
-import { DarkModeContext } from "../theme/DarkModeContext";
-import { useNavigate } from "react-router-dom";
+
+import { NavigationButton } from "../components/navigationButton";
+import { SearchBar } from "../components/searchBar";
+
 
 function UnderNavBar({ selezionato, setSelezionato }) {
-  const { darkMode } = useContext(DarkModeContext);
-  const navigate = useNavigate();
-
-
-
-  const click = (bott) => {
-    setSelezionato(bott);
-    navigate(`/${bott}`)
-  };
 
   return (
     <nav class="navbar navbar-expand-lg navbar-light navbar-lightgreen">
@@ -26,122 +18,51 @@ function UnderNavBar({ selezionato, setSelezionato }) {
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <div className="navbar-nav mr-auto header_center">
-          <form class="form-inline my-2 my-lg-0 ">
-            <input
-              class="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
+
+        <SearchBar></SearchBar>
 
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0 header_center">
-          <li class="nav-item">
-            <a class="nav-link" href="/">
-              <button
-                type="button"
-                className={
-                  selezionato === "home"
-                    ? "btn btn-outline-success " +
-                    (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
-                    : "btn btn-outline-success " +
-                    (darkMode ? "nav2buttonl" : "nav2button")
-                }
-                onClick={() => {
-                  click("home");
-                }}
-              >
-                home
-              </button>
-            </a>
-          </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <button
-                type="button"
-                className={
-                  selezionato === "shop"
-                    ? "btn btn-outline-success " +
-                    (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
-                    : "btn btn-outline-success " +
-                    (darkMode ? "nav2buttonl" : "nav2button")
-                }
-                onClick={() => {
-                  click("shop");
-                }}
-              >
-                shop
-              </button>
-            </a>
-          </li>
+          <NavigationButton
+            buttonText={"Home"}
+            goToPage={"/"}
+            selezionato={selezionato}
+            setSelezionato={setSelezionato}
+          />
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <button
-                type="button"
-                className={
-                  selezionato === "mappa"
-                    ? "btn btn-outline-success " +
-                    (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
-                    : "btn btn-outline-success " +
-                    (darkMode ? "nav2buttonl" : "nav2button")
-                }
-                onClick={() => {
-                  click("mappa");
-                }}
-              >
-                mappa
-              </button>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <button
-                type="button"
-                className={
-                  selezionato === "chi"
-                    ? "btn btn-outline-success " +
-                    (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
-                    : "btn btn-outline-success " +
-                    (darkMode ? "nav2buttonl" : "nav2button")
-                }
-                onClick={() => {
-                  click("chi");
-                }}
-              >
-                chi siamo
-              </button>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contact">
-              <button
-                type="button"
-                className={
-                  selezionato === "contatti"
-                    ? "btn btn-outline-success " +
-                    (darkMode ? "nav2buttonselectedl" : "nav2buttonselected")
-                    : "btn btn-outline-success " +
-                    (darkMode ? "nav2buttonl" : "nav2button")
-                }
-                onClick={() => {
-                  click("contatti");
-                }}
-              >
-                contatti
-              </button>
-            </a>
-          </li>
+          <NavigationButton
+            buttonText={"Shop"}
+            goToPage={"/shop"}
+            selezionato={selezionato}
+            setSelezionato={setSelezionato}
+          />
+
+          <NavigationButton
+            buttonText={"Mappa"}
+            goToPage={"/maps"}
+            selezionato={selezionato}
+            setSelezionato={setSelezionato}
+          />
+
+          <NavigationButton
+            buttonText={"Chi Siamo"}
+            goToPage={"/about"}
+            selezionato={selezionato}
+            setSelezionato={setSelezionato}
+          />
+
+          <NavigationButton
+            buttonText={"Contatti"}
+            goToPage={"/contacts"}
+            selezionato={selezionato}
+            setSelezionato={setSelezionato}
+          />
+
         </ul>
       </div>
-    </nav>
+    </nav >
   );
 }
 

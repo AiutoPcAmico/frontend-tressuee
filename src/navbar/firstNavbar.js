@@ -1,13 +1,16 @@
 import { useContext } from "react";
 import { DarkModeContext } from "../theme/DarkModeContext";
 import logo from "../img/logo.png";
+import { useNavigate } from "react-router-dom";
 
 function FirstNavbar({ selezionato, setSelezionato }) {
     const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
+    const navigate = useNavigate();
 
     const click = (bott) => {
         setSelezionato(bott);
         //if(bott=='home')
+        navigate(`/${bott}`)
     };
 
     return (
@@ -19,7 +22,7 @@ function FirstNavbar({ selezionato, setSelezionato }) {
         >
             <a
                 className={"navbar-brand " + (darkMode ? "testolight" : "testodark")}
-                href="#"
+                href="/"
             >
                 <img
                     src={logo}
@@ -30,6 +33,7 @@ function FirstNavbar({ selezionato, setSelezionato }) {
                 />
                 &nbsp;&nbsp;Treessue
             </a>
+
             <ul className=" navbar-nav ml-auto mt-2 mt-lg-0 upper-navbar">
                 <li className="nav-item ">
                     <button
@@ -47,6 +51,8 @@ function FirstNavbar({ selezionato, setSelezionato }) {
                         <i class="bi bi-incognito"></i>
                     </button>
                 </li>
+
+
                 <li class="nav-item ml-2">
                     <button
                         className={
@@ -64,6 +70,7 @@ function FirstNavbar({ selezionato, setSelezionato }) {
                     </button>
                 </li>
 
+
                 <li class="nav-item ml-2">
                     <button
                         className={
@@ -80,6 +87,8 @@ function FirstNavbar({ selezionato, setSelezionato }) {
                         <i class="bi bi-cart"></i>
                     </button>
                 </li>
+
+
                 <li class="nav-item ml-2">
                     <button
                         className=" btn btn-outline-success nav2button"
