@@ -9,6 +9,7 @@ import { Error404 } from "./pages/error404";
 import { FirstNavbar } from "./navbar/firstNavbar";
 import { ListProducts } from "./pages/listProducts";
 import { TowersMap } from "./pages/towersMap";
+import { About } from "./pages/about";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -53,6 +54,7 @@ Search
         <Route path="/contacts" element={<ContactForm />} />
         <Route path="/shop" element={<ListProducts />} />
         <Route path="/maps" element={<TowersMap />} />
+        <Route path="/about" element={<About />} />
         <Route path="/*" element={<Error404 />} />
 
       </Routes>

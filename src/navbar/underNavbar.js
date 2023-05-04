@@ -1,6 +1,7 @@
 
 import { NavigationButton } from "../components/navigationButton";
 import { SearchBar } from "../components/searchBar";
+import "./navbars.css"
 
 
 function UnderNavBar({ selezionato, setSelezionato }) {

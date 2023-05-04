@@ -1,0 +1,7 @@
+.aboutPage {
+    margin: 2em;
+}
+
+.aboutPage>.text{
+    display: flex;
+}

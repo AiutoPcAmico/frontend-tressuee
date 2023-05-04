@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { DarkModeContext } from "../theme/DarkModeContext";
 import logo from "../img/logo.png";
 import { useNavigate } from "react-router-dom";
+import "./navbars.css"
 
 function FirstNavbar({ selezionato, setSelezionato }) {
     const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
