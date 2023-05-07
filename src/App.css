@@ -1,5 +1,3 @@
-
-
 .App-background {
 
   min-height: 100vh;
@@ -7,97 +5,57 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  */font-size: calc(10px + 2vmin);
+  */
+  /*
+  font-size: calc(10px + 2vmin);
+  */
+  font-size: medium;
 }
+
+.titlePages {
+  color: #77ae59;
+}
+
+
 
 .light-mode {
   background: #f1f4dc;
   color: black;
 }
 
-.dark-mode{
+.dark-mode {
   background-color: #244e23;
-  color:white;
+  color: white;
 }
 
-.header_center{
+.header_center {
   flex-wrap: center;
   align-items: center;
 }
 
-.navbar-lightgreen{
+.navbar-lightgreen {
   background-color: #77ae59;
 }
 
 
-.upper-navbar{
-  flex-direction: row;
-}
-
-.upper-navbar-light{
-  background-color: #39813f;
-}
-
-.upper-navbar-dark{
-  background-color: #c9de8c;
-}
-
-
-/*dark mode*/
-.nav1button{
-  background-color: #77ae59;
-  color : #c9de8c;
-  border-color: #c9de8c;
-}
-.nav1buttonselected{
-  background-color: #244e23;
-  color : #f1f4dc;
-  border-color: #f1f4dc;
-}
-.nav2button{
-  background-color: #39813f;
-  color : #f1f4dc;
-  border-color: #f1f4dc;
-}
-.nav2buttonselected{
-  background-color: #c9de8c;
-  color : #244e23;
-  border-color: #244e23;
-}
-
-/*light mode*/
-.nav1buttonl{
-  background-color: #77ae59;
-  color : #39813f;
-  border-color: #39813f;
-}
-.nav1buttonselectedl{
-  background-color: #f1f4dc ;
-  color : #244e23 ;
-  border-color: #244e23 ;
-}
-.nav2buttonl{
-  background-color: #c9de8c;
-  color : #244e23;
-  border-color: #244e23;
-}
-.nav2buttonselectedl{
-  background-color: #39813f ;
-  color : #f1f4dc ;
-  border-color: #f1f4dc ;
-}
-
-.testolight{
-  color : #244e23 !important ;
+.testolight {
+  color: #244e23 !important;
 
 }
 
-.testodark{
-  color : #f1f4dc !important;
- 
+.testodark {
+  color: #f1f4dc !important;
+
 }
 
-.homePage-structure{
+.homePage-structure {
   display: flex;
-  flex-direction: column;
+}
+
+.homePage-bgimg {
+  background-image: url("./img/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.3);
 }
