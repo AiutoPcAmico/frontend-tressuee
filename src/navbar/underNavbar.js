@@ -4,9 +4,9 @@ import "./navbars.css";
 
 function UnderNavBar({ selezionato, setSelezionato }) {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light navbar-lightgreen">
+    <nav className="navbar navbar-expand-lg navbar-light navbar-lightgreen">
       <button
-        class="navbar-toggler bg-light"
+        className="navbar-toggler bg-light"
         type="button"
         data-toggle="collapse"
         data-target="#navbarTogglerDemo01"
@@ -14,13 +14,13 @@ function UnderNavBar({ selezionato, setSelezionato }) {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
         <SearchBar></SearchBar>
 
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0 header_center">
+        <ul className="navbar-nav ml-auto mt-2 mt-lg-0 header_center">
           <NavigationButton
             buttonText={"Home"}
             goToPage={"/"}

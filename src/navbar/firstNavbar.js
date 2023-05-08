@@ -49,11 +49,11 @@ function FirstNavbar({ selezionato, setSelezionato }) {
               click("account");
             }}
           >
-            <i class="bi bi-incognito"></i>
+            <i className="bi bi-incognito"></i>
           </button>
         </li>
 
-        <li class="nav-item ml-2">
+        <li className="nav-item ml-2">
           <button
             className={
               selezionato === "ordini"
@@ -66,11 +66,11 @@ function FirstNavbar({ selezionato, setSelezionato }) {
               click("ordini");
             }}
           >
-            <i class="bi bi-bag"></i>
+            <i className="bi bi-bag"></i>
           </button>
         </li>
 
-        <li class="nav-item ml-2">
+        <li className="nav-item ml-2">
           <button
             className={
               selezionato === "cart"
@@ -83,18 +83,20 @@ function FirstNavbar({ selezionato, setSelezionato }) {
               click("cart");
             }}
           >
-            <i class="bi bi-cart"></i>
+            <i className="bi bi-cart"></i>
           </button>
         </li>
 
-        <li class="nav-item ml-2">
+        <li className="nav-item ml-2">
           <button
             className=" btn btn-outline-success nav2button"
             onClick={() => {
               toggleDarkMode();
             }}
           >
-            <i class={!darkMode ? "bi-brightness-high " : "bi-moon-fill"}></i>
+            <i
+              className={!darkMode ? "bi-brightness-high " : "bi-moon-fill"}
+            ></i>
           </button>
         </li>
       </ul>

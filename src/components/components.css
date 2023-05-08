@@ -12,3 +12,21 @@
   margin-left: 20%;
   border-radius: 5px;
 }
+
+.sfondocard1 {
+  background-color: #c9de8c;
+  color: #244e23;
+  border-color: #77ae59;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.sfondocard2 {
+  background-color: #77ae59;
+  color: #f1f4dc;
+  border-color: #c9de8c;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+}

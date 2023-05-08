@@ -36,33 +36,33 @@ function TowersMap() {
 
   return (
     <div>
-      <div class="wrapper">
+      <div className="wrapper">
         {/*<!-- Sidebar -->*/}
         <nav id="sidebar" style={{ visibility: hide }} className="">
           <button id="dismiss" onClick={dismissoverlay}>
             x
           </button>
 
-          <div class="sidebar-header">
+          <div className="sidebar-header">
             <h3>Bootstrap Sidebar</h3>
           </div>
 
-          <ul class="list-unstyled components">
+          <ul className="list-unstyled components">
             <p>Dummy Heading</p>
           </ul>
         </nav>
 
         {/*<!-- Dark Overlay element --> se lo metto dopo non copre content*/}
-        <div class="overlay" id="overlay" onClick={dismissoverlay}></div>
+        <div className="overlay" id="overlay" onClick={dismissoverlay}></div>
 
         {/*<!-- Page Content -->*/}
         <div id="content" style={{ zIndex: 9997 }}>
-          <div class="container-fluid">
+          <div className="container-fluid">
             <button
               style={{ width: "80%" }}
               type="button"
               id="sidebarCollapse"
-              class="btn btn-info"
+              className="btn btn-info"
               onClick={display}
             >
               <span>Toggle Sidebar</span>

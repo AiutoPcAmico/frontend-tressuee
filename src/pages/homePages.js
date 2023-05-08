@@ -34,7 +34,7 @@ function HomePages({ setSelezionato }) {
             }
             style={{ width: "200px" }}
             onClick={() => {
-              setSelezionato("Shop");
+              setSelezionato("Chi Siamo");
               navigate("/about");
             }}
           >
@@ -43,7 +43,7 @@ function HomePages({ setSelezionato }) {
         </div>
       </div>
 
-      {/*<img src={bannerimg} class="img-fluid" alt="..."></img>*/}
+      {/*<img src={bannerimg} className="img-fluid" alt="..."></img>*/}
       <div style={{ width: "90vw" }} className="mx-auto">
         <CaroselloFooter></CaroselloFooter>
       </div>

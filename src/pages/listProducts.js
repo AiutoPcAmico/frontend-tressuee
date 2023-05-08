@@ -1,9 +1,76 @@
+import { useEffect, useState } from "react";
+import CardProdotto from "../components/cardProdotto.js";
+
 function ListProducts() {
-    return (
-        <div>
-            Sono un semplice placeholder, poi andrà il carosello con tutti gli elementi
-        </div>
-    )
+  const [listProduct, setListProduct] = useState([]);
+
+  async function retrieveInfo() {
+    var array = [];
+    //await della chiamata axios
+    array = [
+      {
+        id: 1,
+        name: "Fazzoletti 10",
+        category: "fazzoletti",
+        description: "Una descrizione per fazzoletti da 10",
+        unitPrice: 10,
+        isActive: true,
+      },
+      {
+        id: 2,
+        name: "Fazzoletti 200",
+        category: "fazzoletti",
+        description: "Pacchetto da 200",
+        unitPrice: 30,
+        isActive: true,
+      },
+      {
+        id: 3,
+        name: "Torre ricarica",
+        category: "ricaricatore",
+        description: "Una bellissima torre da ricarica",
+        unitPrice: 89.2,
+        isActive: true,
+      },
+      {
+        id: 4,
+        name: "scatoletta",
+        category: "scatoletta",
+        description:
+          "Una bellissima scatoletta per contenere i tuoi fazzoletti!",
+        unitPrice: 21.2,
+        isActive: true,
+      },
+    ];
+    return array;
+  }
+
+  useEffect(() => {
+    retrieveInfo().then((element) => {
+      setListProduct(element);
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log(listProduct);
+  }, [listProduct]);
+
+  return (
+    <div>
+      <div className="sfondo1 mt-2">lista dei filtri!</div>
+      <div className="d-flex flex-wrap justify-content-center">
+        {listProduct.map((p, i) => {
+          return (
+            <CardProdotto
+              singleProduct={p}
+              indice={i}
+              key={p.id}
+            ></CardProdotto>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
-export { ListProducts }
+export { ListProducts };
