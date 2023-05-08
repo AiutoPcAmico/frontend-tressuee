@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../theme/DarkModeContext";
 import { useContext } from "react";
 
 function CardProdotto({ singleProduct, indice }) {
   const { darkMode } = useContext(DarkModeContext);
+  const navigate = useNavigate();
 
   function getImage() {
     const picture = require(`../img/${singleProduct.category}.png`); // this is sync
@@ -11,6 +13,7 @@ function CardProdotto({ singleProduct, indice }) {
 
   function navigateToDetails(id) {
     console.log("navigooo " + id);
+    navigate("/productDetails/" + id);
   }
 
   return (

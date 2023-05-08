@@ -10,6 +10,7 @@ import { FirstNavbar } from "./navbar/firstNavbar";
 import { ListProducts } from "./pages/listProducts";
 import { TowersMap } from "./pages/towersMap";
 import { About } from "./pages/about";
+import { ProductDetail } from "./pages/productDetail";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -51,6 +52,7 @@ Search
         <Route path="/shop" element={<ListProducts />} />
         <Route path="/maps" element={<TowersMap />} />
         <Route path="/about" element={<About />} />
+        <Route path="/productDetails/:id" element={<ProductDetail />} />
         <Route path="/*" element={<Error404 />} />
       </Routes>
     </div>
