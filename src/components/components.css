@@ -1,0 +1,14 @@
+.carousel-inner > .carousel-item > img {
+  max-width: 360px !important;
+  max-height: 360px;
+  margin: auto;
+  width: 60vw !important;
+  height: 60vw;
+}
+
+.carousel-inner > .carousel-item > div > p {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 60%;
+  margin-left: 20%;
+  border-radius: 5px;
+}

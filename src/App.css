@@ -1,5 +1,4 @@
 .App-background {
-
   min-height: 100vh;
   /*display: flex;
   flex-direction: column;
@@ -9,23 +8,22 @@
   /*
   font-size: calc(10px + 2vmin);
   */
-  font-size: medium;
+  font-size: large;
+  padding-bottom: 20px;
 }
 
 .titlePages {
   color: #77ae59;
 }
 
-
-
 .light-mode {
-  background: #f1f4dc;
-  color: black;
+  background-color: #f1f4dc;
+  color: #244e23;
 }
 
 .dark-mode {
   background-color: #244e23;
-  color: white;
+  color: #f1f4dc !important;
 }
 
 .header_center {
@@ -37,15 +35,12 @@
   background-color: #77ae59;
 }
 
-
 .testolight {
   color: #244e23 !important;
-
 }
 
 .testodark {
   color: #f1f4dc !important;
-
 }
 
 .homePage-structure {
