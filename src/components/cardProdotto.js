@@ -7,13 +7,12 @@ function CardProdotto({ singleProduct, indice }) {
   const navigate = useNavigate();
 
   function getImage() {
-    const picture = require(`../img/${singleProduct.category}.png`); // this is sync
+    const picture = singleProduct.image;
     return picture;
   }
 
   function navigateToDetails(id) {
-    console.log("navigooo " + id);
-    navigate("/productDetails/" + id);
+    navigate("/shop/productDetails/" + id);
   }
 
   return (

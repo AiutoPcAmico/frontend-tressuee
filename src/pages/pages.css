@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.detailsPage {
+  margin: 2em;
+}
+
 .sfondo1 {
   background-color: #c9de8c;
   color: #77ae59;
@@ -19,6 +23,15 @@
   background-color: #77ae59;
   color: #c9de8c;
   border-color: #c9de8c;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.sfondo3 {
+  background-color: #244e23;
+  color: #f1f4dc;
+  border-color: #f1f4dc;
   border-width: 1px;
   border-style: solid;
   border-radius: 10px;

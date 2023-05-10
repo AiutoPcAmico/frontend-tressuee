@@ -32,7 +32,8 @@ Search
   return (
     <div
       className={
-        "App App-background " + (darkMode ? "light-mode" : "dark-mode")
+        "App App-background text-justify " +
+        (darkMode ? "light-mode" : "dark-mode")
       }
     >
       <FirstNavbar
@@ -52,7 +53,7 @@ Search
         <Route path="/shop" element={<ListProducts />} />
         <Route path="/maps" element={<TowersMap />} />
         <Route path="/about" element={<About />} />
-        <Route path="/productDetails/:id" element={<ProductDetail />} />
+        <Route path="shop/productDetails/:id" element={<ProductDetail />} />
         <Route path="/*" element={<Error404 />} />
       </Routes>
     </div>

@@ -6,7 +6,6 @@ function TowersMap() {
 
   function dismissoverlay() {
     //nascondi side e overlay
-    console.log("a");
     var element = document.getElementById("sidebar");
     element.classList.remove("active");
     var element2 = document.getElementById("overlay");

@@ -1,10 +1,7 @@
-import scatola from "../img/scatoletta.png";
-import torre from "../img/ricaricatore.png";
-import fazzoletti from "../img/fazzoletti.png";
-import intero from "../img/intero.png";
 import { DarkModeContext } from "../theme/DarkModeContext";
 import "./components.css";
 import { useContext } from "react";
+import images from "../img/base_image_temp.json";
 
 function CaroselloFooter() {
   const { darkMode } = useContext(DarkModeContext);
@@ -30,7 +27,7 @@ function CaroselloFooter() {
         <div className="carousel-item active">
           <h4 style={{ textAlign: "center" }}>La Scatola</h4>
 
-          <img src={scatola} className="d-block w-100" alt="..." />
+          <img src={images.scatolina} className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
             <p className="testodark">
               La scatola è eco-friendly e ricaricabile! Mantiene i fazzoletti al
@@ -41,7 +38,7 @@ function CaroselloFooter() {
         </div>
         <div className="carousel-item">
           <h4 style={{ textAlign: "center" }}>La torre</h4>
-          <img src={torre} className="d-block w-100" alt="..." />
+          <img src={images.ricaricatore} className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
             <p className="testodark">
               Le torri servono per ricaricare la scatola. La torre 'domestica' è
@@ -51,7 +48,7 @@ function CaroselloFooter() {
         </div>
         <div className="carousel-item">
           <h4 style={{ textAlign: "center" }}>L'intero set!</h4>
-          <img src={intero} className="d-block w-100" alt="..." />
+          <img src={images.intero} className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
             <p className="testodark">
               Saranno presenti torri in luoghi pubblici, per non rimanere mai a
@@ -61,7 +58,7 @@ function CaroselloFooter() {
         </div>
         <div className="carousel-item">
           <h4 style={{ textAlign: "center" }}>I miei fazzoletti!</h4>
-          <img src={fazzoletti} className="d-block w-100" alt="..." />
+          <img src={images.fazzoletti} className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
             <p className="testodark">
               I nostri fazzoletti hanno 4 veli, sono fatti completamente da

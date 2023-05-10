@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CardProdotto from "../components/cardProdotto.js";
+import base_images from "../img/base_image_temp.json";
 
 function ListProducts() {
   const [listProduct, setListProduct] = useState([]);
@@ -15,6 +16,7 @@ function ListProducts() {
         description: "Una descrizione per fazzoletti da 10",
         unitPrice: 10,
         isActive: true,
+        image: base_images.fazzoletti,
       },
       {
         id: 2,
@@ -23,6 +25,7 @@ function ListProducts() {
         description: "Pacchetto da 200",
         unitPrice: 30,
         isActive: true,
+        image: base_images.fazzoletti,
       },
       {
         id: 3,
@@ -31,6 +34,7 @@ function ListProducts() {
         description: "Una bellissima torre da ricarica",
         unitPrice: 89.2,
         isActive: true,
+        image: base_images.ricaricatore,
       },
       {
         id: 4,
@@ -40,6 +44,7 @@ function ListProducts() {
           "Una bellissima scatoletta per contenere i tuoi fazzoletti!",
         unitPrice: 21.2,
         isActive: true,
+        image: base_images.scatolina,
       },
     ];
     return array;
@@ -50,10 +55,6 @@ function ListProducts() {
       setListProduct(element);
     });
   }, []);
-
-  useEffect(() => {
-    console.log(listProduct);
-  }, [listProduct]);
 
   return (
     <div>

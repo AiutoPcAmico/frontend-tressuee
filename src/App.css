@@ -10,6 +10,15 @@
   */
   font-size: large;
   padding-bottom: 20px;
+  white-space: pre-line;
+  vertical-align: bottom;
+}
+
+@media (max-width: 640px) {
+  #scrollableText {
+    overflow-y: visible !important;
+    max-height: fit-content !important;
+  }
 }
 
 .titlePages {
