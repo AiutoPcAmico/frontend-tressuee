@@ -21,6 +21,9 @@
   }
 }
 
+#scrollableText::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
 .titlePages {
   color: #77ae59;
 }
