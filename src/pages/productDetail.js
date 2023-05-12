@@ -2,9 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DarkModeContext } from "../theme/DarkModeContext";
 import baseImages from "../img/base_image_temp.json";
+import { useDispatch } from "react-redux";
+import { addItem } from "../stores/cartOperations";
+import QuantitySelector from "../components/quantitySelector";
 
 function ProductDetail() {
   const params = useParams();
+  const dispatch = useDispatch();
   const { darkMode } = useContext(DarkModeContext);
   const [height, setHeight] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -25,41 +29,7 @@ function ProductDetail() {
     setHeight(document.getElementById("testo").clientHeight);
   }, []);
 
-  //gestisce l'on blur nel caso di testo vuoto!
-  const cambiaquantita = (event) => {
-    console.log(event.target.value);
-    event.target.value = event.target.value * 1;
-
-    if (isNaN(event.target.value)) {
-      event.target.value = 1;
-      console.log("NON numero");
-    }
-    if (event.target.value < 1) {
-      event.target.value = 1;
-    }
-    event.target.value = +event.target.value;
-
-    //setQuantity(event.target.value * 1);
-    changeQuantity(event.target.value, true);
-  };
-
-  //gestisce tutti gli altri casi!
-  function changeQuantity(many, manual) {
-    //if (many === "");
-
-    if (many !== "") {
-      var pippo = many * 1;
-
-      if (pippo < 1) setQuantity(1);
-      if (pippo > quantity) setQuantity(product.quantity);
-
-      if (pippo >= 1 && pippo <= product.quantity) setQuantity(pippo);
-    } else {
-      setQuantity("");
-    }
-  }
-
-  async function retrieveDetailsOfProduct(idProd) {
+  async function retrieveDetailsOfProduct() {
     var array = [];
     //await della chiamata axios
     array = [
@@ -147,7 +117,7 @@ function ProductDetail() {
             <div
               id="scrollableText"
               className={
-                "col-sm-4 col-12 " + (darkMode ? "testolight" : "testodark")
+                "col-md-4 col-12 " + (darkMode ? "testolight" : "testodark")
               }
               style={{ width: "32%", overflowY: "scroll", maxHeight: "60vh" }}
             >
@@ -167,50 +137,20 @@ function ProductDetail() {
               style={{ width: "32%" }}
             >
               <p style={{ fontSize: "25px", textAlign: "right" }}>
-                {(Math.round(product.unitPrice * 100) / 100).toFixed(2)} €
+                Totale{" "}
+                {(
+                  (Math.round(product.unitPrice * 100) * quantity) /
+                  100
+                ).toFixed(2)}{" "}
+                €
               </p>
 
               <p>
-                <div className="input-group mb-3 justify-content-center">
-                  <div className="input-group-prepend">
-                    <button
-                      className="btn btn-danger"
-                      type="button"
-                      id="button-addon1"
-                      onClick={() => {
-                        changeQuantity(quantity - 1, false);
-                      }}
-                    >
-                      <i className="bi bi-dash"></i>
-                    </button>
-                  </div>
-                  <input
-                    type="number"
-                    className="form-control text-center"
-                    placeholder="Quantity..."
-                    aria-describedby="button-addon1"
-                    value={quantity}
-                    onChange={(event) => {
-                      changeQuantity(event.target.value, true);
-                    }}
-                    onBlur={(event) => {
-                      cambiaquantita(event);
-                    }}
-                    style={{ width: "100px", flex: "none" }}
-                  />
-                  <div class="input-group-append">
-                    <button
-                      class="btn btn-info"
-                      type="button"
-                      id="button-addon2"
-                      onClick={() => {
-                        changeQuantity(quantity + 1, false);
-                      }}
-                    >
-                      <i class="bi bi-plus"></i>
-                    </button>
-                  </div>
-                </div>
+                <QuantitySelector
+                  initialQuantity={1}
+                  setUpperQuantity={setQuantity}
+                  prodQuantity={product.quantity}
+                ></QuantitySelector>
               </p>
 
               <p>
@@ -220,6 +160,9 @@ function ProductDetail() {
                     "btn btn-outline-success " +
                     (darkMode ? "nav2buttonl" : "nav2button")
                   }
+                  onClick={() => {
+                    dispatch(addItem({ id: product.id, quantity: quantity }));
+                  }}
                 >
                   aggiungi al carrello
                 </button>

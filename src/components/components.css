@@ -23,9 +23,18 @@
 }
 
 .sfondocard2 {
-  background-color: #77ae59;
+  background-color: #c9de8c;
+  color: #244e23;
+  border-color: #77ae59;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.sfondocard3 {
+  background-color: #39813f;
   color: #f1f4dc;
-  border-color: #c9de8c;
+  border-color: #77ae59;
   border-width: 1px;
   border-style: solid;
   border-radius: 10px;

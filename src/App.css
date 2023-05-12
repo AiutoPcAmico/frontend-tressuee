@@ -14,7 +14,7 @@
   vertical-align: bottom;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   #scrollableText {
     overflow-y: visible !important;
     max-height: fit-content !important;
