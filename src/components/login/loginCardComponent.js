@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { DarkModeContext } from "../theme/DarkModeContext";
-import image from "../img/logo.png";
+import { DarkModeContext } from "../../theme/DarkModeContext";
 
 function LoginCardComponent() {
   const [username, setUsername] = useState("");

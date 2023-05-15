@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { LoginCardComponent } from "../components/loginCardComponent";
 import "./loginPage.css";
 import { DarkModeContext } from "../theme/DarkModeContext";
-import { LoginCardFooter } from "../components/loginCardFooter";
-import { RegisterCardComponent } from "../components/registerCardComponent";
+import { LoginCardComponent } from "../components/login/loginCardComponent";
+import { LoginCardFooter } from "../components/login/loginCardFooter";
+import { RegisterCardComponent } from "../components/login/registerCardComponent";
 import image from "../img/logo.png";
 
 function LoginPage() {
