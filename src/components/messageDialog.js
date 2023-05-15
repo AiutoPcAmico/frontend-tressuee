@@ -14,9 +14,9 @@ function MessageDialog({
   return (
     <div>
       <div
-        className="modal fade"
+        className="modal modal-first"
         id="messageDialog"
-        tabindex="-1"
+        tabIndex="-1"
         role="dialog"
         aria-labelledby="messageDialogTitle"
         aria-hidden="true"
