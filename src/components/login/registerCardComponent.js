@@ -11,12 +11,6 @@ function RegisterCardComponent() {
     passwordConfirm: "",
     nome: "",
     cognome: "",
-    data: "",
-    telefono: "",
-    cap: null,
-    via: "",
-    paese: "",
-    provincia: "",
   });
 
   function checkIsAllCompleted() {
@@ -54,7 +48,6 @@ function RegisterCardComponent() {
   }
 
   useEffect(() => {
-    console.log({ user });
     if (
       user.username &&
       user.password &&
@@ -75,7 +68,6 @@ function RegisterCardComponent() {
     user.nome,
     user.password,
     user.passwordConfirm,
-    user,
   ]);
 
   return (
@@ -99,7 +91,7 @@ function RegisterCardComponent() {
               className="form-control  registerStyle"
               id="staticEmail"
               value={user.username}
-              placeholder="Inserisci la tua email..."
+              placeholder="Inserisci la tua email"
               required={true}
               onChange={(el) => {
                 setUser({ ...user, username: el.target.value });
@@ -131,7 +123,7 @@ function RegisterCardComponent() {
             htmlFor="inputPasswordConfirm"
             className="col-sm-2 col-form-label"
           >
-            Ripeti:
+            Ripeti
           </label>
           <div className="col-sm-10">
             <input
@@ -149,7 +141,7 @@ function RegisterCardComponent() {
 
         <div className="form-group row mx-auto fadeIn fifth">
           <label htmlFor="inputNome" className="col-sm-2 col-form-label">
-            Nome:
+            Nome
           </label>
           <div className="col-sm-10">
             <input
@@ -167,7 +159,7 @@ function RegisterCardComponent() {
 
         <div className="form-group row mx-auto fadeIn sixth">
           <label htmlFor="inputCognome" className="col-sm-2 col-form-label">
-            Cognome:
+            Cognome
           </label>
           <div className="col-sm-10">
             <input
@@ -182,116 +174,10 @@ function RegisterCardComponent() {
             />
           </div>
         </div>
-        {/*
-        <div class="form-group row mx-auto">
-          <label for="inputData" class="col-sm-2 col-form-label">
-            Data:
-          </label>
-          <div class="col-sm-10">
-            <input
-              type="date"
-              class="form-control registerStyle"
-              id="inputData"
-              required={true}
-              placeholder="Seleziona la tua data di nascita"
-              onChange={(el) => {
-                setUser({ ...user, data: el.target.value });
-              }}
-            />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="inputPassword" class="col-sm-2 col-form-label">
-            Telefono:
-          </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control registerStyle"
-              id="inputPassword"
-              required={true}
-              placeholder="Inserisci telefono"
-              onChange={(el) => {
-                setUser({ ...user, telefono: el.target.value });
-              }}
-            />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="inputPassword" class="col-sm-2 col-form-label">
-            via:
-          </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control registerStyle"
-              id="inputPassword"
-              required={true}
-              placeholder="Inserisci via"
-              onChange={(el) => {
-                setUser({ ...user, via: el.target.value });
-              }}
-            />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="inputPassword" class="col-sm-2 col-form-label">
-            Paese:
-          </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control registerStyle"
-              id="inputPassword"
-              required={true}
-              placeholder="Inserisci paese"
-              onChange={(el) => {
-                setUser({ ...user, paese: el.target.value });
-              }}
-            />
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="inputPassword" class="col-sm-2 col-form-label">
-            Cap:
-          </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control registerStyle"
-              id="inputPassword"
-              required={true}
-              placeholder="Inserisci cap"
-              onChange={(el) => {
-                setUser({ ...user, cao: el.target.value });
-              }}
-            />
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputPassword" class="col-sm-2 col-form-label">
-            Provincia:
-          </label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control registerStyle"
-              id="inputPassword"
-              required={true}
-              placeholder="Inserisci cognome"
-              onChange={(el) => {
-                setUser({ ...user, username: el.target.value });
-              }}
-            />
-          </div>
-            </div>*/}
       </form>
 
       <button
+        disabled={!canIDoRegistration}
         className={
           "fadeIn fourth btn m-1 " +
           (canIDoRegistration
@@ -314,7 +200,14 @@ function RegisterCardComponent() {
         data-target={checkIsAllCompleted ? "#messageDialog" : ""}
         style={{ display: "none" }}
       ></button>
-      <p style={{ color: "red" }}>{errorMessage}</p>
+      {errorMessage && (
+        <p
+          style={{ color: "red", width: "60%" }}
+          className="sfondo1 mx-auto mt-2 "
+        >
+          {errorMessage}
+        </p>
+      )}
       {/*<div>
         <MessageDialog
           ConfirmButtonText={"Accedi"}

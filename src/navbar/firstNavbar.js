@@ -46,7 +46,7 @@ function FirstNavbar({ selezionato, setSelezionato }) {
                   (darkMode ? "nav1buttonl" : "nav1button")
             }
             onClick={() => {
-              click("account");
+              click("login");
             }}
           >
             <i className="bi bi-incognito"></i>
