@@ -11,8 +11,8 @@ function TowersMap() {
       description: "Una torre di piccole dimensioni...",
     },
     {
-      latitude: 45.92121,
-      longitude: 10.265126,
+      latitude: 45.936309,
+      longitude: 10.257162,
       description: "Una torre di medie dimensioni...",
     },
     {
