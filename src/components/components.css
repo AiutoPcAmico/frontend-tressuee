@@ -163,3 +163,9 @@
 .wrapper-login #icon {
   width: 60%;
 }
+
+/*CSS for the MAP*/
+.map {
+  height: 70vh;
+  margin: 2em;
+}
