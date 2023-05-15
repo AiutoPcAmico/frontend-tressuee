@@ -5,11 +5,11 @@ function Error404() {
         <h1 className="display-1 fw-bold">404</h1>
         <p className="fs-3">
           {" "}
-          <span class="text-danger">Oops!</span> Si è verificato un errore :
+          <span className="text-danger">Oops!</span> Si è verificato un errore :
           {"("}
         </p>
         <p className="lead">La pagina cercata non esiste!.</p>
-        <a href="/" class="btn btn-primary">
+        <a href="/" className="btn btn-primary">
           Torna alla homepage
         </a>
       </div>

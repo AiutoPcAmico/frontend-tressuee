@@ -84,7 +84,7 @@ const CartPage = ({ totalProducts }) => {
     //chiamata api per riavere tutti i prodotti, da aggiungere
     return tempProducts;
   }
-  console.log("prooova" + products.length);
+  //console.log("prooova" + products.length);
 
   return (
     <div>

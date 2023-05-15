@@ -8,7 +8,7 @@ function CardCarrello({ product, quantity }) {
   const { darkMode } = useContext(DarkModeContext);
   const dispatch = useDispatch();
 
-  console.log(product);
+  //console.log(product);
 
   function getImage() {
     const picture = product.image;
@@ -20,8 +20,8 @@ function CardCarrello({ product, quantity }) {
       className={"card mb-3 " + (darkMode ? "sfondocard1" : "sfondocard3")}
       style={{ width: "100%" }}
     >
-      <div class="row no-gutters">
-        <div class="col-md-4">
+      <div className="row no-gutters">
+        <div className="col-md-4">
           <img
             src={getImage()}
             className="card-img-top mx-auto mt-1"
@@ -29,13 +29,13 @@ function CardCarrello({ product, quantity }) {
             style={{ width: "150px" }}
           />
         </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{product.name}</h5>
-            <p class="card-text">
+        <div className="col-md-8">
+          <div className="card-body">
+            <h5 className="card-title">{product.name}</h5>
+            <p className="card-text">
               Prezzo Unitario: {product.unitPrice.toFixed(2)} €
             </p>
-            <p class="card-text">
+            <p className="card-text">
               <QuantitySelector
                 initialQuantity={quantity}
                 setUpperQuantity={(value) => {
@@ -54,10 +54,10 @@ function CardCarrello({ product, quantity }) {
                   dispatch(removeItem({ id: product.id }));
                 }}
               >
-                <i class="bi bi-trash3"></i>
+                <i className="bi bi-trash3"></i>
               </button>
             </p>
-            <p class="card-text">
+            <p className="card-text">
               Totale Parziale: {(product.unitPrice * quantity).toFixed(2)} €
             </p>
           </div>

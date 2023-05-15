@@ -1,62 +1,61 @@
 .upper-navbar {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .upper-navbar-light {
-    background-color: #39813f;
+  background-color: #39813f;
 }
 
 .upper-navbar-dark {
-    background-color: #c9de8c;
+  background-color: #c9de8c;
 }
-
 
 /*dark mode*/
 .nav1button {
-    background-color: #77ae59;
-    color: #c9de8c;
-    border-color: #c9de8c;
+  background-color: #77ae59;
+  color: #c9de8c;
+  border-color: #c9de8c;
 }
 
 .nav1buttonselected {
-    background-color: #244e23;
-    color: #f1f4dc;
-    border-color: #f1f4dc;
+  background-color: #244e23;
+  color: #f1f4dc;
+  border-color: #f1f4dc;
 }
 
 .nav2button {
-    background-color: #39813f;
-    color: #f1f4dc;
-    border-color: #f1f4dc;
+  background-color: #39813f;
+  color: #f1f4dc;
+  border-color: #f1f4dc;
 }
 
 .nav2buttonselected {
-    background-color: #c9de8c;
-    color: #244e23;
-    border-color: #244e23;
+  background-color: #c9de8c;
+  color: #244e23;
+  border-color: #244e23;
 }
 
 /*light mode*/
 .nav1buttonl {
-    background-color: #77ae59;
-    color: #39813f;
-    border-color: #39813f;
+  background-color: #77ae59;
+  color: #39813f;
+  border-color: #39813f;
 }
 
 .nav1buttonselectedl {
-    background-color: #f1f4dc;
-    color: #244e23;
-    border-color: #244e23;
+  background-color: #f1f4dc;
+  color: #244e23;
+  border-color: #244e23;
 }
 
 .nav2buttonl {
-    background-color: #c9de8c;
-    color: #244e23;
-    border-color: #244e23;
+  background-color: #c9de8c;
+  color: #244e23;
+  border-color: #244e23;
 }
 
 .nav2buttonselectedl {
-    background-color: #39813f;
-    color: #f1f4dc;
-    border-color: #f1f4dc;
+  background-color: #39813f;
+  color: #f1f4dc;
+  border-color: #f1f4dc;
 }

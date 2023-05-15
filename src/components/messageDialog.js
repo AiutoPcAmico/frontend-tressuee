@@ -51,7 +51,10 @@ function MessageDialog({
               {CancelButtonVisible && (
                 <button
                   type="button"
-                  className="btn btn-secondary"
+                  className={
+                    "btn btn-outlined-success " +
+                    (darkMode ? "nav1buttonl" : "nav1buttonl")
+                  }
                   data-dismiss="modal"
                 >
                   {CancelButtonText}
@@ -59,7 +62,10 @@ function MessageDialog({
               )}
               <button
                 type="button"
-                className="btn btn-primary"
+                className={
+                  "btn btn-outlined-primary " +
+                  (darkMode ? "nav2button" : "nav2buttonselected")
+                }
                 data-dismiss="modal"
                 onClick={onConfirm}
               >

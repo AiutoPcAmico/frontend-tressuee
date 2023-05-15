@@ -13,6 +13,7 @@ import { About } from "./pages/about";
 import { ProductDetail } from "./pages/productDetail";
 import { TestingPage } from "./pages/testingPage";
 import { CartPage } from "./pages/cartPage";
+import { LoginPage } from "./pages/loginPage";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -53,10 +54,11 @@ Search
         <Route path="/home" element={<Navigate replace to="/" />} />
         <Route path="/contacts" element={<ContactForm />} />
         <Route path="/shop" element={<ListProducts />} />
+        <Route path="shop/productDetails/:id" element={<ProductDetail />} />
         <Route path="/maps" element={<TowersMap />} />
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="shop/productDetails/:id" element={<ProductDetail />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/*" element={<Error404 />} />
         <Route path="/testing" element={<TestingPage />} />
       </Routes>
