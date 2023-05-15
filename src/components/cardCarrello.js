@@ -1,7 +1,7 @@
 import { DarkModeContext } from "../theme/DarkModeContext";
 import { useContext } from "react";
 import QuantitySelector from "./quantitySelector";
-import { removeItem } from "../stores/cartOperations";
+import { removeItem, updateItem } from "../stores/cartOperations";
 import { useDispatch } from "react-redux";
 
 function CardCarrello({ product, quantity }) {
@@ -17,7 +17,7 @@ function CardCarrello({ product, quantity }) {
 
   return (
     <div
-      className={"card mb-3 " + (darkMode ? "sfondocard2" : "sfondocard1")}
+      className={"card mb-3 " + (darkMode ? "sfondocard1" : "sfondocard3")}
       style={{ width: "100%" }}
     >
       <div class="row no-gutters">
@@ -36,12 +36,17 @@ function CardCarrello({ product, quantity }) {
               Prezzo Unitario: {product.unitPrice.toFixed(2)} €
             </p>
             <p class="card-text">
-              {/*Quantità: {quantity}*/}
               <QuantitySelector
                 initialQuantity={quantity}
-                setUpperQuantity={() => {}}
+                setUpperQuantity={(value) => {
+                  if (quantity !== value) {
+                    console.log({ quantity, value });
+                    dispatch(updateItem({ id: product.id, quantity: value }));
+                  }
+                }}
                 prodQuantity={product.quantity}
               ></QuantitySelector>
+
               <button
                 type="button"
                 className="btn btn-warning ml-1"

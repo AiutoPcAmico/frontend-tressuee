@@ -1,14 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { DarkModeContext } from "../theme/DarkModeContext";
 import baseImages from "../img/base_image_temp.json";
 import { useDispatch } from "react-redux";
 import { addItem } from "../stores/cartOperations";
 import QuantitySelector from "../components/quantitySelector";
+import { MessageDialog } from "../components/messageDialog";
 
 function ProductDetail() {
   const params = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { darkMode } = useContext(DarkModeContext);
   const [height, setHeight] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -94,6 +96,19 @@ function ProductDetail() {
   return (
     <div>
       <div className="detailsPage">
+        <MessageDialog
+          titleModal={"Prodotto aggiunto!"}
+          CancelButtonText={"Torna ai dettagli"}
+          CancelButtonVisible={true}
+          ConfirmButtonText={"Vai al Carrello"}
+          text={
+            "Il prodotto selezionato è stato aggiunto correttamente al carrello!\nVuoi continuare lo shopping o andare direttamente al carrello?"
+          }
+          onConfirm={() => {
+            navigate("/cart");
+          }}
+        ></MessageDialog>
+
         <h2 className={darkMode ? "testolight" : "testodark"}>
           {product.name}
           {height}
@@ -163,8 +178,23 @@ function ProductDetail() {
                   onClick={() => {
                     dispatch(addItem({ id: product.id, quantity: quantity }));
                   }}
+                  data-toggle="modal"
+                  data-target="#messageDialog"
                 >
-                  aggiungi al carrello
+                  aggiungi al Carrello
+                </button>
+
+                <button
+                  type="button"
+                  className={
+                    "btn btn-outline-success ml-3 " +
+                    (darkMode ? "nav2buttonl" : "nav2button")
+                  }
+                  onClick={() => {
+                    navigate("/cart");
+                  }}
+                >
+                  Vai al Carrello
                 </button>
               </p>
 

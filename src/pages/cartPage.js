@@ -12,7 +12,7 @@ const tempProducts = [
     description: "Una descrizione per fazzoletti da 10",
     unitPrice: 10,
     isActive: true,
-    quantity: 10,
+    quantity: 23,
     image: base_images.fazzoletti,
   },
   {
@@ -20,7 +20,7 @@ const tempProducts = [
     name: "Fazzoletti 200",
     category: "fazzoletti",
     description: "Pacchetto da 200",
-    unitPrice: 30,
+    unitPrice: 10,
     isActive: true,
     quantity: 20,
     image: base_images.fazzoletti,
@@ -33,7 +33,7 @@ const tempProducts = [
     description: "Una bellissima torre da ricarica",
     unitPrice: 89.2,
     isActive: true,
-    quantity: 5,
+    quantity: 60,
     image: base_images.ricaricatore,
   },
   {
@@ -43,7 +43,7 @@ const tempProducts = [
     description: "Una bellissima scatoletta per contenere i tuoi fazzoletti!",
     unitPrice: 21.2,
     isActive: true,
-    quantity: 60,
+    quantity: 1,
     image: base_images.scatolina,
   },
 ];
@@ -84,6 +84,7 @@ const CartPage = ({ totalProducts }) => {
     //chiamata api per riavere tutti i prodotti, da aggiungere
     return tempProducts;
   }
+  console.log("prooova" + products.length);
 
   return (
     <div>
@@ -98,6 +99,11 @@ const CartPage = ({ totalProducts }) => {
                 (darkMode ? "sfondo3" : "sfondo1")
               }
             >
+              {!(cart.length > 0) && (
+                <p className={!darkMode ? "testolight" : "testodark"}>
+                  Carrello vuoto
+                </p>
+              )}
               {products.length > 0 &&
                 cart.map((element) => {
                   const product = products.find(

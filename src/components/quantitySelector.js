@@ -3,7 +3,7 @@ import { useState } from "react";
 function QuantitySelector({ initialQuantity, setUpperQuantity, prodQuantity }) {
   const [quantity, setQuantity] = useState(initialQuantity);
 
-  console.log(prodQuantity);
+  //console.log("num max" + prodQuantity);
 
   //gestisce l'on blur nel caso di testo vuoto!
   const cambiaquantita = (event) => {
@@ -34,14 +34,15 @@ function QuantitySelector({ initialQuantity, setUpperQuantity, prodQuantity }) {
         setQuantity(1);
         setUpperQuantity(1);
       }
-      if (pippo > quantity) {
-        setQuantity(prodQuantity);
-        setUpperQuantity(prodQuantity);
-      }
 
       if (pippo >= 1 && pippo <= prodQuantity) {
         setQuantity(pippo);
         setUpperQuantity(pippo);
+      } else {
+        if (pippo > quantity) {
+          setQuantity(prodQuantity);
+          setUpperQuantity(prodQuantity);
+        }
       }
     } else {
       setQuantity("");
