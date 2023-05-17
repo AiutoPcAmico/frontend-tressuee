@@ -1,8 +1,26 @@
 import { useState } from "react";
-import towerMapFake from "../img/maps_placeholder.png";
+import { LeafletMap } from "../components/LeafletMap";
 
 function TowersMap() {
   const [hide, setHide] = useState("hidden");
+
+  const positions = [
+    {
+      latitude: 45.94574,
+      longitude: 10.280165,
+      description: "Una torre di piccole dimensioni...",
+    },
+    {
+      latitude: 45.936309,
+      longitude: 10.257162,
+      description: "Una torre di medie dimensioni...",
+    },
+    {
+      latitude: 45.690854,
+      longitude: 9.807038,
+      description: "La nostra sede!",
+    },
+  ];
 
   function dismissoverlay() {
     //nascondi side e overlay
@@ -23,15 +41,6 @@ function TowersMap() {
 
     //element.classList.toggle("in");
   }
-
-  /* $('#sidebarCollapse').on('click', function () {
-            // open sidebar
-            $('#sidebar').addClass('active');
-            // fade in the overlay
-            $('.overlay').addClass('active');
-            $('.collapse.in').toggleClass('in');
-            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-        });*/
 
   return (
     <div>
@@ -67,7 +76,9 @@ function TowersMap() {
               <span>Toggle Sidebar</span>
             </button>
           </div>
-          <img src={towerMapFake} alt="fake map!"></img>
+
+          {/*qui va tutta la pagina in rendering!*/}
+          <LeafletMap positions={positions}></LeafletMap>
         </div>
       </div>
     </div>
