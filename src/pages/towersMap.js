@@ -107,7 +107,7 @@ function TowersMap() {
           >
             <div
               className="list-group list-group-flush overflow-auto"
-              style={{ height: "77vh" }}
+              style={{ height: "78.3vh", backgroundColor: "#77ae59" }}
             >
               {positions.map((singlePosition) => {
                 return (

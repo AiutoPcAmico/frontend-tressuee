@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { DarkModeContext } from "../../theme/DarkModeContext";
+import { postLogin } from "../../api/indexTreessueApi";
 
 function LoginCardComponent() {
   const [username, setUsername] = useState("");
@@ -7,10 +8,14 @@ function LoginCardComponent() {
   const [canIDoLogin, setCanIDoLogin] = useState(false);
   const { darkMode } = useContext(DarkModeContext);
 
-  function doLogin() {
+  async function doLogin() {
     //chiamata API al login
-    console.log("Ho fatto il login con");
-    console.log({ username, password });
+
+    await postLogin(username, password).then((response) => {
+      console.log(response);
+      console.log("Ho fatto il login con");
+      console.log({ username, password });
+    });
   }
 
   function isValidEmail(email) {

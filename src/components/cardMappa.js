@@ -17,15 +17,18 @@ function CardMappa({ posizione, set }) {
     //}}
     >
       <div
-        className={"card mx-auto " + (darkMode ? "sfondo1" : "sfondo2")}
+        className={"card mx-auto " + (darkMode ? "sfondocard1" : "sfondocard3")}
         style={{ maxWidth: "25'px" }}
         onClick={cliccata}
       >
         <div className="card-body">
           <h5 className="card-title">{posizione.title}</h5>
-          <h6 className="card-subtitle mb-2 text-muted">
+          <p
+            className="card-subtitle mb-2 small"
+            style={!darkMode ? { color: "#c9de8c" } : { color: "#39813f" }}
+          >
             {posizione.location}
-          </h6>
+          </p>
           <p className="card-text">{posizione.description}</p>
         </div>
       </div>

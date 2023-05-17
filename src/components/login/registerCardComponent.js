@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { DarkModeContext } from "../../theme/DarkModeContext";
+import { registerUser } from "../../api/indexTreessueApi";
 
 function RegisterCardComponent() {
   const [canIDoRegistration, setCanIDoRegistration] = useState(false);
@@ -32,11 +33,19 @@ function RegisterCardComponent() {
     return !error;
   }
 
-  function doRegistration() {
+  async function doRegistration() {
     const canIProceed = checkIsAllCompleted();
     console.log({ canIProceed });
     if (canIProceed) {
       //chiamata API al login
+
+      const result = await registerUser(
+        user.username,
+        user.nome,
+        user.cognome,
+        user.password
+      );
+      console.log({ result });
       console.log("Ho fatto il login con");
       console.log({ user });
       document.getElementById("togglemodal").click();
