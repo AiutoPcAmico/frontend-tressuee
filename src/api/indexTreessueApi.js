@@ -20,7 +20,7 @@ const registerUser = async (username, name, surname, password) => {
   console.log({ username, name, surname, password });
   try {
     const data = await axios.post("/user-registration/registerCustomer", {
-      username: username,
+      email: username,
       firstName: name,
       lastName: surname,
       password: password,

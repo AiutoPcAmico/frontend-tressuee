@@ -8,10 +8,23 @@ import { useContext, useEffect, useState } from "react";
 function AccountPage() {
   const { darkMode } = useContext(DarkModeContext);
   const [account, setAccount] = useState([]);
+  const [mod, setMod] = useState(true);
+  const [email, setEmail] = useState("prova");
+
+  const disable = () => {
+    setMod(!mod);
+    //console.log(mod);
+  };
 
   return (
     <div className="detailsPage">
-      <h2 className={darkMode ? "testolight" : "testodark"}>Account</h2>
+      {/*ciaooooooo 👋 */}
+      <h2
+        className={darkMode ? "testolight" : "testodark"}
+        style={{ width: "50%" }}
+      >
+        Account
+      </h2>
       <div className=" text flex-column" style={{}}>
         <div className="row flex-wrap align-items-center pb-3">
           <div
@@ -45,7 +58,7 @@ function AccountPage() {
                     <div style={{ textAlign: "left" }}>
                       <div class="form-group row">
                         <label
-                          for="staticEmail"
+                          for="emailaccount"
                           class="col-md-3 col-form-label"
                         >
                           Email
@@ -53,16 +66,25 @@ function AccountPage() {
                         <div class="col-md-9">
                           <input
                             type="text"
-                            readonly
-                            class="form-control-plaintext"
-                            id="staticEmail"
-                            value="email@example.com"
+                            disabled={mod}
+                            //meglio cambiare nome
+
+                            //
+                            className={
+                              mod ? "form-control-plaintext" : "form-control"
+                            }
+                            id="emailaccount"
+                            //value="email@example.com"
+                            value={email}
+                            onChange={(el) => {
+                              setEmail(el.target.value);
+                            }}
                           />
                         </div>
                       </div>
                       <div class="form-group row">
                         <label
-                          for="inputPassword"
+                          for="passwordaccount"
                           class="col-md-3 col-form-label"
                         >
                           Password
@@ -71,13 +93,13 @@ function AccountPage() {
                           <input
                             type="password"
                             class="form-control"
-                            id="inputPassword"
+                            id="passwordaccount"
                           />
                         </div>
                       </div>
                       <div class="form-group row">
                         <label
-                          for="staticEmail"
+                          for="nomeaccount"
                           class="col-lg-3 col-form-label"
                         >
                           Nome
@@ -87,12 +109,12 @@ function AccountPage() {
                             type="text"
                             readonly
                             class="form-control-plaintext"
-                            id="staticEmail"
+                            id="nomeaccount"
                             value="nome"
                           />
                         </div>
                         <label
-                          for="staticEmail"
+                          for="cognomeaccount"
                           class="col-lg-3 col-form-label"
                         >
                           Cognome
@@ -102,7 +124,7 @@ function AccountPage() {
                             type="text"
                             readonly
                             class="form-control-plaintext"
-                            id="staticEmail"
+                            id="cognomeaccount"
                             value="cognome"
                           />
                         </div>
@@ -110,11 +132,9 @@ function AccountPage() {
                     </div>
                   </div>
                   {/*riga sotto img 
-                  data
                   provincia 
                   paese nazione?
                   citta
-                  cap
                   */}
                   <div
                     style={{ textAlign: "left" }}
@@ -124,7 +144,10 @@ function AccountPage() {
                     }
                   >
                     <div class="form-group row">
-                      <label for="staticEmail" class="col-sm-3 col-form-label">
+                      <label
+                        for="telefonoaccount"
+                        class="col-sm-3 col-form-label"
+                      >
                         Telefono
                       </label>
                       <div class="col-sm-9">
@@ -132,14 +155,14 @@ function AccountPage() {
                           type="text"
                           readonly
                           class="form-control-plaintext"
-                          id="staticEmail"
+                          id="telefonoaccount"
                           value="email@example.com"
                         />
                       </div>
                     </div>
                     <div class="form-group row">
                       <label
-                        for="inputPassword"
+                        for="indirizzoaccount"
                         class="col-sm-3 col-form-label"
                       >
                         Indirizzo
@@ -148,58 +171,71 @@ function AccountPage() {
                         <input
                           type="text"
                           class="form-control"
-                          id="inputPassword"
+                          id="indirizzoaccount"
                         />
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="staticEmail" class="col-md- col-form-label">
+                      <label
+                        for="dataaccount"
+                        class="col-md-2 col-sm-3 col-form-label"
+                      >
                         Data
                       </label>
-                      <div class="col-md-4">
+                      {/*diversi step funzionano? */}
+                      <div class="col-md-5 col-sm-9">
                         <input
                           type="date"
                           readonly
-                          class="form-control-plaintext"
-                          id="staticEmail"
-                          value="nome"
+                          class="form-control"
+                          id="dataaccount"
+                          value=""
                         />
                       </div>
-                      <label for="staticEmail" class="col-md-2 col-form-label">
+                      <label
+                        for="capaccount"
+                        class="col-md-2 col-sm-3 col-form-label"
+                      >
                         Cap
                       </label>
-                      <div class="col-md-3">
+                      <div class="col-md-3 col-sm-9">
                         <input
                           type="text"
                           readonly
                           class="form-control-plaintext"
-                          id="staticEmail"
+                          id="capaccount"
                           value="cognome"
                         />
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="staticEmail" class="col-md-2 col-form-label">
-                        Provincia
+                      <label
+                        for="cittaaccount"
+                        class="col-md-2 col-sm-3 col-form-label"
+                      >
+                        Citta'
                       </label>
-                      <div class="col-md-2">
+                      <div class="col-md-5 col-sm-9">
                         <input
                           type="text"
                           readonly
                           class="form-control-plaintext"
-                          id="staticEmail"
+                          id="cittaaccount"
                           value="cognome"
                         />
                       </div>
-                      <label for="staticEmail" class="col-md-1 col-form-label">
-                        Cap
+                      <label
+                        for="provinciaaccount"
+                        class="col-md-3 col-sm-3 col-form-label"
+                      >
+                        Provincia
                       </label>
-                      <div class="col-md-2">
+                      <div class="col-md-2 col-sm-9">
                         <input
                           type="text"
                           readonly
                           class="form-control-plaintext"
-                          id="staticEmail"
+                          id="provinciaaccount"
                           value="cognome"
                         />
                       </div>
@@ -212,16 +248,48 @@ function AccountPage() {
           <div
             style={{ width: "49%" }}
             className={
-              "col-sm-4 col-12 align-self-start text-center sfondo2 " +
+              "col-sm-4 col-12 text-center sfondo2 " +
               (darkMode ? "testolight" : "testodark")
             }
           >
             <p style={{ fontSize: "25px", textAlign: "right" }}>Totale</p>
-
+            {mod && (
+              <button
+                type="button"
+                className={
+                  "btn btn-outline-success " +
+                  (darkMode ? "nav2buttonl" : "nav2button")
+                }
+                onClick={disable}
+              >
+                <i class="bi bi-pencil"></i>
+                {" modifica"}
+              </button>
+            )}
+            {!mod && (
+              <button
+                type="button"
+                className={
+                  "btn btn-outline-success " +
+                  (darkMode ? "nav2buttonl" : "nav2button")
+                }
+                onClick={disable}
+              >
+                <i class="bi bi-check"></i>
+                {" salva"}
+              </button>
+            )}
             <div style={{ textAlign: "left" }}>
               <p>cose da scrivere dopo</p>
               <p>
-                <b>€</b>
+                <b>
+                  per esempio gli errori - almeno li vedi sempre xke clicchi
+                  salva
+                </b>
+              </p>
+              <p>
+                metterei un altro button mod/salva dalla parte opposta di
+                'accoun'
               </p>
             </div>
             <p>
@@ -235,6 +303,181 @@ function AccountPage() {
                 log-out
               </button>
             </p>
+          </div>
+        </div>
+        I tuoi dispositivi
+        <div className="d-flex flex-wrap justify-content-center">
+          {/*listProduct.map((p, i) => {
+          return (
+            <CardProdotto
+              singleProduct={p}
+              indice={i}
+              key={p.id}
+            ></CardProdotto>
+          );
+        })*/}
+          <div
+            className={"card m-2 " + (darkMode ? "sfondocard2" : "sfondocard1")}
+            style={{ width: "18rem" }}
+            onClick={() => {
+              //navigateToDetails(singleProduct.id);
+            }}
+          >
+            <img
+              //src={getImage()}
+              className="card-img-top mx-auto mt-1"
+              //alt={`${singleProduct.category} icon`}
+              style={{ width: "150px" }}
+            />
+
+            <div className="card-body">
+              <h5 className="card-title">{/*singleProduct.name*/}nome</h5>
+              <p className="card-text small">
+                {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
+                tipo
+              </p>
+              <p className="card-text">se torre num fazzoletti?</p>
+
+              <button
+                className="btn btn-outline-success nav2button"
+                onClick={() => {
+                  //navigateToDetails(singleProduct.id);
+                }}
+              >
+                Visualizza i dettagli!
+              </button>
+            </div>
+          </div>
+          <div
+            className={"card m-2 " + (darkMode ? "sfondocard2" : "sfondocard1")}
+            style={{ width: "18rem" }}
+            onClick={() => {
+              //navigateToDetails(singleProduct.id);
+            }}
+          >
+            <img
+              //src={getImage()}
+              className="card-img-top mx-auto mt-1"
+              //alt={`${singleProduct.category} icon`}
+              style={{ width: "150px" }}
+            />
+
+            <div className="card-body">
+              <h5 className="card-title">
+                {/*singleProduct.name*/}nome pagina per
+                modifica?????????????????????????????????????
+              </h5>
+              <p className="card-text small">
+                {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
+                tipo
+              </p>
+              <p className="card-text">Affrettati!</p>
+
+              <button
+                className="btn btn-outline-success nav2button"
+                onClick={() => {
+                  //navigateToDetails(singleProduct.id);
+                }}
+              >
+                Visualizza i dettagli!
+              </button>
+            </div>
+          </div>
+          <div
+            className={"card m-2 " + (darkMode ? "sfondocard2" : "sfondocard1")}
+            style={{ width: "18rem" }}
+            onClick={() => {
+              //navigateToDetails(singleProduct.id);
+            }}
+          >
+            <img
+              //src={getImage()}
+              className="card-img-top mx-auto mt-1"
+              //alt={`${singleProduct.category} icon`}
+              style={{ width: "150px" }}
+            />
+
+            <div className="card-body">
+              <h5 className="card-title">{/*singleProduct.name*/}nome dato</h5>
+              <p className="card-text small">
+                {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
+                tipo articolo
+              </p>
+              <p className="card-text">Affrettati! è gratuita!</p>
+
+              <button
+                className="btn btn-outline-success nav2button"
+                onClick={() => {
+                  //navigateToDetails(singleProduct.id);
+                }}
+              >
+                Visualizza i dettagli!
+              </button>
+            </div>
+          </div>
+          <div
+            className={"card m-2 " + (darkMode ? "sfondocard2" : "sfondocard1")}
+            style={{ width: "18rem" }}
+            onClick={() => {
+              //navigateToDetails(singleProduct.id);
+            }}
+          >
+            <img
+              //src={getImage()}
+              className="card-img-top mx-auto mt-1"
+              //alt={`${singleProduct.category} icon`}
+              style={{ width: "150px" }}
+            />
+
+            <div className="card-body">
+              <h5 className="card-title">{/*singleProduct.name*/}nome</h5>
+              <p className="card-text small">
+                {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
+                tipo
+              </p>
+              <p className="card-text">La spedizione gratuita!</p>
+
+              <button
+                className="btn btn-outline-success nav2button"
+                onClick={() => {
+                  //navigateToDetails(singleProduct.id);
+                }}
+              >
+                Visualizza i dettagli!
+              </button>
+            </div>
+          </div>
+          <div
+            className={"card m-2 " + (darkMode ? "sfondocard2" : "sfondocard1")}
+            style={{ width: "18rem" }}
+            onClick={() => {
+              //navigateToDetails(singleProduct.id);
+            }}
+          >
+            <img
+              //src={getImage()}
+              className="card-img-top mx-auto mt-1"
+              //alt={`${singleProduct.category} icon`}
+              style={{ width: "150px" }}
+            />
+
+            <div className="card-body">
+              <h5 className="card-title">{/*singleProduct.name*/}nome</h5>
+              <p className="card-text">
+                {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
+                tipo
+              </p>
+              <p className="card-text">Affrettati! La spedizione è gratuita!</p>
+
+              <button
+                className="btn btn-outline-success nav2button"
+                onClick={() => {
+                  //navigateToDetails(singleProduct.id);
+                }}
+              >
+                Visualizza i dettagli!
+              </button>
+            </div>
           </div>
         </div>
       </div>
