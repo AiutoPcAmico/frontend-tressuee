@@ -46,9 +46,16 @@ function RegisterCardComponent() {
         user.password
       );
       console.log({ result });
-      console.log("Ho fatto il login con");
-      console.log({ user });
-      document.getElementById("togglemodal").click();
+      if (result.status === 201) {
+        console.log("Ho fatto il login con");
+        console.log({ user });
+        document.getElementById("togglemodal").click();
+      } else {
+        setErrorMessage(
+          "Si è verificato un errore durante la registrazione dell'utenza.\nRiprova\n\nCodice Errore: " +
+            result.status
+        );
+      }
     }
   }
 

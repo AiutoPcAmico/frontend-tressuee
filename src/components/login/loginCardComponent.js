@@ -6,15 +6,24 @@ function LoginCardComponent() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [canIDoLogin, setCanIDoLogin] = useState(false);
+  const [errorLogin, setErrorLogin] = useState("");
   const { darkMode } = useContext(DarkModeContext);
 
   async function doLogin() {
     //chiamata API al login
 
-    await postLogin(username, password).then((response) => {
-      console.log(response);
-      console.log("Ho fatto il login con");
-      console.log({ username, password });
+    await postLogin(username, password).then((data) => {
+      console.log(data);
+      if (data.response.status === 200) {
+        setErrorLogin("");
+        console.log("Ho fatto il login con");
+        console.log({ username, password });
+      } else {
+        setErrorLogin(
+          "Si è verificato un errore durante il login.\nRiprova!\n\nCodice errore: " +
+            data.response.status
+        );
+      }
     });
   }
 
@@ -167,6 +176,14 @@ function LoginCardComponent() {
         >
           Effettua il Login
         </button>
+
+        {errorLogin !== "" && (
+          <div class="alert alert-danger">
+            <strong>Errore!</strong>
+            <br></br>
+            {errorLogin}.
+          </div>
+        )}
       </div>
     </div>
   );

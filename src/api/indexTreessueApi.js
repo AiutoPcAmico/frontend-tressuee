@@ -6,7 +6,6 @@ const postLogin = async (username, password) => {
   try {
     const data = await axios.post("/user-login/login", undefined, {
       headers: {
-        "api-key": process.env.REACT_APP_API_KEY,
         Authorization: "Basic " + base64encodedData,
       },
     });
@@ -22,14 +21,13 @@ const registerUser = async (username, name, surname, password) => {
   try {
     const data = await axios.post("/user-registration/registerCustomer", {
       username: username,
-      name: name,
-      surname: surname,
+      firstName: name,
+      lastName: surname,
       password: password,
     });
-    return data;
+    return data.reponse;
   } catch (e) {
-    console.log(e);
-    return e;
+    return e.response;
   }
 };
 
