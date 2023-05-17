@@ -2,7 +2,7 @@ import L from "leaflet";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import "./components.css";
 import "leaflet/dist/leaflet.css";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -12,39 +12,60 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
 
-function LeafletMap({ positions }) {
-  function GetMyLocation() {
-    const [position, setPosition] = useState(null);
+const GetMyLocation = memo(() => {
+  const map = useMap();
 
-    const map = useMap();
+  useEffect(() => {
+    map.locate().on("locationfound", function (e) {
+      map.flyTo(e.latlng, map.getZoom());
+    });
+  }, [map]);
+  return <></>;
+});
 
-    useEffect(() => {
-      map.locate().on("locationfound", function (e) {
-        setPosition(e.latlng);
-        map.flyTo(e.latlng, map.getZoom());
-      });
-    }, [map]);
-  }
+function RenderingWithHooks({ position }) {
+  const map = useMap();
+  useEffect(() => {
+    console.log({ position });
+    if (position && position?.latitude && position?.longitude) {
+      map.flyTo([position.latitude, position.longitude], 15);
+    }
+  }, [map, position]);
+}
+
+function LeafletMap({ positions, isFixed, positionSelected }) {
+  const [styled, setStyled] = useState("maprelative");
+  //console.log({ isFixed });
+
+  useEffect(() => {
+    //console.log(isFixed === "hidden" ? "maprelative" : "mapfixed");
+    setStyled(isFixed === "hidden" ? "maprelative" : "mapfixed");
+  }, [isFixed]);
 
   return (
-    <div>
+    <div className={styled}>
       <MapContainer
         className="map"
         center={[positions[0].latitude, positions[0].longitude]}
-        zoom={9}
+        zoom={11}
         scrollWheelZoom={false}
       >
+        <RenderingWithHooks position={positionSelected}></RenderingWithHooks>
+
         <GetMyLocation></GetMyLocation>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {positions.map((location) => {
-          console.log(location.latitude, location.longitude);
+          //console.log(location.latitude, location.longitude);
           return (
             <Marker position={[location.latitude, location.longitude]}>
               <Popup>
-                <b>Punto di Ricarica</b> <br /> {location.description}
+                <b>{location.title}</b> <br /> <i>{location.location}</i>
+                <br></br>
+                <br></br>
+                {location.description}
               </Popup>
             </Marker>
           );

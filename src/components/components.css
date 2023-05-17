@@ -164,8 +164,20 @@
   width: 60%;
 }
 
-/*CSS for the MAP*/
 .map {
   height: 70vh;
-  margin: 2em;
+  width: -webkit-fill-available;
+  margin: 0em 2em 2em 2em;
+}
+
+.mapfixed {
+  height: 70vh;
+  width: -webkit-fill-available;
+  position: fixed;
+}
+
+.maprelative {
+  height: 70vh;
+  width: -webkit-fill-available;
+  position: relative;
 }

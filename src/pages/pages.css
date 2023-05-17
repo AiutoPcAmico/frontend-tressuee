@@ -43,7 +43,7 @@
   height: 100%;
   top: 0;
   left: 50%;
-  background: rgba(#009ac9, 0.85);
+  background: rgba(#77ae59, 0.85);
 }
 
 .wrapper {
@@ -58,11 +58,24 @@
   left: -250px;
   /* top layer */
   z-index: 9999;
-  background-color: #009ac9;
+  background-color: #77ae59;
   /*transform: translate(-100vw);*/
   transition: all 0.5s;
 }
-
+#sidebarCollapse {
+  position: fixed;
+  left: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  /* top layer */
+  z-index: 9999;
+  background-color: #77ae59;
+  /*transform: translate(-100vw);*/
+  transition: all 0.5s;
+}
+#sidebarCollapse.active {
+  transform: translate(250px);
+}
 #sidebar.active {
   transform: translate(250px);
 }
@@ -87,12 +100,8 @@
   opacity: 1;
 }
 
-#dismiss {
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  /* top right corner of the sidebar */
-  top: 10px;
-  right: 10px;
-  background-color: cadetblue;
+/*CSS for the MAP*/
+
+.wrapper-map {
+  position: fixed;
 }
