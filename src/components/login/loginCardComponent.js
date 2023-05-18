@@ -14,15 +14,14 @@ function LoginCardComponent() {
 
     await postLogin(username, password).then((data) => {
       console.log(data);
-      if (data.response.status === 200) {
+      if (!data.isError) {
         setErrorLogin("");
         console.log("Ho fatto il login con");
         console.log({ username, password });
+
+        //qui andrà il salvataggio del token utente
       } else {
-        setErrorLogin(
-          "Si è verificato un errore durante il login.\nRiprova!\n\nCodice errore: " +
-            data.response.status
-        );
+        setErrorLogin(data.messageError + "\nErrore: " + data.status);
       }
     });
   }

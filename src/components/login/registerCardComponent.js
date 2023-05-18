@@ -46,15 +46,12 @@ function RegisterCardComponent() {
         user.password
       );
       console.log({ result });
-      if (result.status === 201) {
+      if (!result.isError) {
         console.log("Ho fatto il login con");
         console.log({ user });
         document.getElementById("togglemodal").click();
       } else {
-        setErrorMessage(
-          "Si è verificato un errore durante la registrazione dell'utenza.\nRiprova\n\nCodice Errore: " +
-            result.status
-        );
+        setErrorMessage(result.messageError + "\nErrore: " + result.status);
       }
     }
   }
@@ -224,18 +221,6 @@ function RegisterCardComponent() {
           {errorMessage}
         </p>
       )}
-      {/*<div>
-        <MessageDialog
-          ConfirmButtonText={"Accedi"}
-          CancelButtonText={""}
-          CancelButtonVisible={false}
-          titleModal={"Registrazione completata!✔️"}
-          text={
-            "Benvenuto nella community Treessue!\nL'iscrizione al portale è avvenuta con successo.\n\nProcedi ora al login con le credenziali appena generate."
-          }
-          onConfirm={() => {}}
-        />
-        </div>*/}
     </div>
   );
 }

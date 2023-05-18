@@ -4,6 +4,7 @@ import logger from "redux-logger";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import cartOperations from "./cartOperations";
+import sessionInfo from "./sessionInfo";
 
 const persistConfig = {
   key: "root",
@@ -11,8 +12,9 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-  counter: counterSlice,
   cart: cartOperations,
+  sessionInfo: sessionInfo,
+  counter: counterSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

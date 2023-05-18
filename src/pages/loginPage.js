@@ -90,7 +90,9 @@ function LoginPage() {
             text={
               "Benvenuto nella community Treessue!\nL'iscrizione al portale è avvenuta con successo.\n\nProcedi ora al login con le credenziali appena generate."
             }
-            onConfirm={() => {}}
+            onConfirm={() => {
+              setPageOpened("login");
+            }}
           />
         </div>
       }

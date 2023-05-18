@@ -17,6 +17,7 @@ function TowersMap() {
       longitude: 10.280165,
       description: "Una torre di piccole dimensioni...",
       title: "Torre di Ricarica",
+      tissuenumber: 10,
     },
     {
       latitude: 45.936309,
@@ -24,6 +25,7 @@ function TowersMap() {
       location: "Via dei Pascoli SNC, Cividate Camuno (BS)",
       description: "Una torre di medie dimensioni...",
       title: "Torre di Ricarica",
+      tissuenumber: 20,
     },
     {
       latitude: 45.690854,
@@ -31,6 +33,7 @@ function TowersMap() {
       location: "Via del Convento 1, San Paolo D'Argon (BG)",
       description: "Una torre di medie dimensioni...",
       title: "Sede Aziendale",
+      tissuenumber: 30,
     },
     {
       latitude: 45.896468,
@@ -38,6 +41,7 @@ function TowersMap() {
       location: "Via del monticolo 33, Darfo Boario Terme (BS)",
       description: "Una torre di piccole dimensioni...",
       title: "Torre di Ricarica",
+      tissuenumber: 5,
     },
     {
       latitude: 45.879757,
@@ -45,6 +49,7 @@ function TowersMap() {
       location: "Lago Moro 0, Darfo Boario Terme (BS)",
       description: "Una torre di medie dimensioni...",
       title: "Torre di Ricarica",
+      tissuenumber: 100,
     },
     {
       latitude: 45.697537,
@@ -52,6 +57,7 @@ function TowersMap() {
       location: "Via dei boschi, Paese Sconosciuto (BG)",
       description: "La nostra seconda sede!",
       title: "Sede nei boschi",
+      tissuenumber: 50,
     },
   ];
 
