@@ -19,14 +19,14 @@ function AccountPage() {
   const [account, setAccount] = useState({
     email: user.email || "",
     password: user.password || "",
-    nome: user.nome || "",
-    cognome: user.cognome || "",
-    telefono: user.telefono || "",
-    indirizzo: user.indirizzo || "",
-    data: user.data || "", //data gg-mm-aaaa
-    cap: user.cap || "",
-    citta: user.citta || "",
-    provincia: user.provincia || "",
+    firstName: user.firstName || "",
+    lastName: user.lastName || "",
+    phoneNumber: user.phoneNumber || "",
+    address: user.address || "",
+    birthDate: user.birthDate || "", //data gg-mm-aaaa
+    zipCode: user.zipCode || "",
+    city: user.city || "",
+    province: user.province || "",
   });
 
   const modifyInfo = () => {
@@ -47,11 +47,11 @@ function AccountPage() {
       setError("Inserire la nuova (o vecchia) password");
     }
 
-    if (!account.nome || !account.cognome) {
+    if (!account.firstName || !account.lastName) {
       setError("Compilare il nome e il cognome!");
     }
 
-    if (account.telefono.length > 0 && !isValidPhone(account.telefono)) {
+    if (account.phoneNumber.length > 0 && !isValidPhone(account.phoneNumber)) {
       setError("Numero di telefono non valido!");
     }
 
@@ -60,16 +60,21 @@ function AccountPage() {
     }
   }, [
     account.email,
-    account.telefono,
-    account.nome,
-    account.cognome,
+    account.phoneNumber,
+    account.firstName,
+    account.lastName,
     account.password,
   ]);
 
   const confirmSave = () => {
     console.log({ account });
 
-    if (account.email && account.password && account.nome && account.cognome) {
+    if (
+      account.email &&
+      account.password &&
+      account.firstName &&
+      account.lastName
+    ) {
       if (error === null) {
         //chiamata di api di salvataggio
 
@@ -212,9 +217,12 @@ function AccountPage() {
                                 : "form-control"
                             }
                             id="nomeaccount"
-                            value={account.nome}
+                            value={account.firstName}
                             onChange={(el) => {
-                              setAccount({ ...account, nome: el.target.value });
+                              setAccount({
+                                ...account,
+                                firstName: el.target.value,
+                              });
                             }}
                           />
                         </div>
@@ -234,11 +242,11 @@ function AccountPage() {
                                 : "form-control"
                             }
                             id="cognomeaccount"
-                            value={account.cognome}
+                            value={account.lastName}
                             onChange={(el) => {
                               setAccount({
                                 ...account,
-                                cognome: el.target.value,
+                                lastName: el.target.value,
                               });
                             }}
                           />
@@ -273,11 +281,11 @@ function AccountPage() {
                               : "form-control"
                           }
                           id="telefonoaccount"
-                          value={account.telefono}
+                          value={account.phoneNumber}
                           onChange={(el) => {
                             setAccount({
                               ...account,
-                              telefono: el.target.value,
+                              phoneNumber: el.target.value,
                             });
                           }}
                         />
@@ -300,11 +308,11 @@ function AccountPage() {
                               : "form-control"
                           }
                           id="indirizzoaccount"
-                          value={account.indirizzo}
+                          value={account.address}
                           onChange={(el) => {
                             setAccount({
                               ...account,
-                              indirizzo: el.target.value,
+                              address: el.target.value,
                             });
                           }}
                         />
@@ -338,9 +346,12 @@ function AccountPage() {
                               .split("T")[0]
                           }
                           id="dataaccount"
-                          value={account.data}
+                          value={account.birthDate}
                           onChange={(el) => {
-                            setAccount({ ...account, data: el.target.value });
+                            setAccount({
+                              ...account,
+                              birthDate: el.target.value,
+                            });
                           }}
                         />
                       </div>
@@ -361,9 +372,12 @@ function AccountPage() {
                               : "form-control"
                           }
                           id="capaccount"
-                          value={account.cap}
+                          value={account.zipCode}
                           onChange={(el) => {
-                            setAccount({ ...account, cap: el.target.value });
+                            setAccount({
+                              ...account,
+                              zipCode: el.target.value,
+                            });
                           }}
                         />
                       </div>
@@ -385,9 +399,9 @@ function AccountPage() {
                               : "form-control"
                           }
                           id="cittaaccount"
-                          value={account.citta}
+                          value={account.city}
                           onChange={(el) => {
-                            setAccount({ ...account, citta: el.target.value });
+                            setAccount({ ...account, city: el.target.value });
                           }}
                         />
                       </div>
@@ -406,11 +420,11 @@ function AccountPage() {
                               : "form-control") + " custom-select"
                           }
                           id="provinciaaccount"
-                          value={account.provincia}
+                          value={account.province}
                           onChange={(el) => {
                             setAccount({
                               ...account,
-                              provincia: el.target.value,
+                              province: el.target.value,
                             });
                           }}
                         >
@@ -418,7 +432,7 @@ function AccountPage() {
                           {
                             //se vuoto prende la prima in automatico
                             prov.map((p) => {
-                              if (p.sigla === account.provincia) {
+                              if (p.sigla === account.province) {
                                 return (
                                   <option selected key={p.sigla}>
                                     {p.sigla}
@@ -439,11 +453,11 @@ function AccountPage() {
                               : "form-control"
                           }
                           id="provinciaaccount"
-                          value={account.provincia}
+                          value={account.province}
                           onChange={(el) => {
                             setAccount({
                               ...account,
-                              provincia: el.target.value,
+                              province: el.target.value,
                             });
                           }}
                         />*/}
@@ -461,12 +475,11 @@ function AccountPage() {
               (darkMode ? "testolight" : "testodark")
             }
           >
-            <p style={{ fontSize: "25px", textAlign: "right" }}>Totale</p>
             {!isOnModify && (
               <button
                 type="button"
                 className={
-                  "btn btn-outline-success " +
+                  "btn btn-outline-success mt-3 " +
                   (darkMode ? "nav2button" : "nav2buttonl")
                 }
                 onClick={modifyInfo}
@@ -479,7 +492,7 @@ function AccountPage() {
               <button
                 type="button"
                 className={
-                  "btn btn-outline-success " +
+                  "btn btn-outline-success mt-3 " +
                   (darkMode ? "nav2button" : "nav2buttonl")
                 }
                 onClick={confirmSave}
@@ -491,7 +504,7 @@ function AccountPage() {
 
             {error && (
               <div style={{ textAlign: "left" }}>
-                <p className="alert alert-danger">
+                <p className="alert alert-danger mt-3">
                   <b>Errore!</b>
                   <br></br>
                   <span>{error}</span>
@@ -536,6 +549,7 @@ function AccountPage() {
               className="card-img-top mx-auto mt-1"
               //alt={`${singleProduct.category} icon`}
               style={{ width: "150px" }}
+              alt="icon"
             />
 
             <div className="card-body">

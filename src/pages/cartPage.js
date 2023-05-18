@@ -3,6 +3,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import base_images from "../img/base_image_temp.json";
 import CardCarrello from "../components/cardCarrello";
 import { useSelector } from "react-redux";
+import { retrieveAllProducts } from "../api/indexTreessueApi";
 
 const tempProducts = [
   {
@@ -50,11 +51,21 @@ const tempProducts = [
 
 const CartPage = ({ totalProducts }) => {
   const { darkMode } = useContext(DarkModeContext);
-  const cart = useSelector((state) => state.cart.listCart);
-  const [products, setProducts] = useState([]);
+  const cart = useSelector((state) => state.cart.listCart); //prodoti nel carrello
+  const [products, setProducts] = useState([]); //lista tutti prodotti
+  const [error, setError] = useState();
 
   useEffect(() => {
-    setProducts(retrieveProduct());
+    retrieveAllProducts().then((element) => {
+      //console.log(element);
+      if (element.isError) {
+        setError(element.messageError);
+      } else {
+        setError("");
+        console.log(element.data);
+        setProducts(element.data);
+      }
+    });
   }, []);
 
   const totalNumberOfProduct = useMemo(() => {
@@ -71,20 +82,14 @@ const CartPage = ({ totalProducts }) => {
     var price = 0;
     cart.forEach((element) => {
       const product = products.find((singleProd) => {
-        return singleProd.id === element.productId;
+        return singleProd.id_product === element.id_product;
       });
 
-      price = price + product.unitPrice * element.quantity;
+      price = price + product.unit_price * element.quantity;
     });
 
     return price;
   }, [cart, products]);
-
-  function retrieveProduct() {
-    //chiamata api per riavere tutti i prodotti, da aggiungere
-    return tempProducts;
-  }
-  //console.log("prooova" + products.length);
 
   return (
     <div>
@@ -107,13 +112,18 @@ const CartPage = ({ totalProducts }) => {
               {products.length > 0 &&
                 cart.map((element) => {
                   const product = products.find(
-                    (singleProd) => singleProd.id === element.productId
+                    //(singleProd) => singleProd.id === element.productId
+                    (singleProd) => {
+                      return singleProd.id_product === element.id_product;
+                    }
                   );
 
                   return (
                     <CardCarrello
                       product={product}
                       quantity={element.quantity}
+                      //key={element.id}
+                      key={element.id_product}
                     ></CardCarrello>
                   );
                 })}

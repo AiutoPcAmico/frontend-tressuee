@@ -33,15 +33,19 @@ function CardCarrello({ product, quantity }) {
           <div className="card-body">
             <h5 className="card-title">{product.name}</h5>
             <p className="card-text">
-              Prezzo Unitario: {product.unitPrice.toFixed(2)} €
+              {/*Prezzo Unitario: {product.unitPrice.toFixed(2)} €*/}
+              Prezzo Unitario: {product.unit_price.toFixed(2)} €
             </p>
-            <p className="card-text">
+            <div className="card-text">
               <QuantitySelector
                 initialQuantity={quantity}
                 setUpperQuantity={(value) => {
                   if (quantity !== value) {
                     console.log({ quantity, value });
-                    dispatch(updateItem({ id: product.id, quantity: value }));
+                    //dispatch(updateItem({ id: product.id, quantity: value }));
+                    dispatch(
+                      updateItem({ id: product.id_product, quantity: value })
+                    );
                   }
                 }}
                 prodQuantity={product.quantity}
@@ -51,14 +55,16 @@ function CardCarrello({ product, quantity }) {
                 type="button"
                 className="btn btn-warning ml-1"
                 onClick={() => {
-                  dispatch(removeItem({ id: product.id }));
+                  //dispatch(removeItem({ id: product.id }));
+                  dispatch(removeItem({ id: product.id_product }));
                 }}
               >
                 <i className="bi bi-trash3"></i>
               </button>
-            </p>
+            </div>
             <p className="card-text">
-              Totale Parziale: {(product.unitPrice * quantity).toFixed(2)} €
+              {/*Totale Parziale: {(product.unitPrice * quantity).toFixed(2)} €*/}
+              Totale Parziale: {(product.unit_price * quantity).toFixed(2)} €
             </p>
           </div>
         </div>

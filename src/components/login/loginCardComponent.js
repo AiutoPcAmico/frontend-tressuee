@@ -1,6 +1,10 @@
 import { useContext, useState, useEffect } from "react";
 import { DarkModeContext } from "../../theme/DarkModeContext";
 import { postLogin } from "../../api/indexTreessueApi";
+import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { setSessionDetails, setSessionUser } from "../../stores/sessionInfo";
+import { useNavigate } from "react-router-dom";
 
 function LoginCardComponent() {
   const [username, setUsername] = useState("");
@@ -8,18 +12,34 @@ function LoginCardComponent() {
   const [canIDoLogin, setCanIDoLogin] = useState(false);
   const [errorLogin, setErrorLogin] = useState("");
   const { darkMode } = useContext(DarkModeContext);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   async function doLogin() {
     //chiamata API al login
 
     await postLogin(username, password).then((data) => {
       console.log(data);
+
       if (!data.isError) {
         setErrorLogin("");
-        console.log("Ho fatto il login con");
-        console.log({ username, password });
-
-        //qui andrà il salvataggio del token utente
+        //console.log("Ho fatto il login con");
+        //console.log({ username, password });
+        //console.log(data.data.result.access_token);
+        //jwt
+        //salvataggio store
+        console.log({ data });
+        const user = jwtDecode(data.data.result.access_token); // decode your token here
+        console.log({ user });
+        dispatch(
+          setSessionDetails({
+            sessionStarted: user.iat,
+            sessionExpire: user.exp,
+            sessionToken: data.data.result.access_token,
+          })
+        );
+        dispatch(setSessionUser({ user: user.userDetail }));
+        navigate("/");
       } else {
         setErrorLogin(data.messageError + "\nErrore: " + data.status);
       }

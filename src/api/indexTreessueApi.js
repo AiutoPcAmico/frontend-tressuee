@@ -24,9 +24,7 @@ function retrieveErrors(statusCode, data) {
       //Unauthorized Access
       isError = true;
       messageError = "La sessione è scaduta.\nPrego, rieffettuare il login.";
-
       destroySession();
-      //TODO qui andrà il nostro distruttore di sessione
       break;
 
     case 403:
@@ -38,7 +36,8 @@ function retrieveErrors(statusCode, data) {
 
     case 404:
       isError = true;
-      messageError = "Elemento non trovato.\nRiprova!";
+      messageError =
+        "Gli elementi ricercati non sono stati trovati nel nostro sistema.\nRiprova!";
       break;
 
     case 409:
@@ -77,7 +76,6 @@ const postLogin = async (username, password) => {
         Authorization: "Basic " + base64encodedData,
       },
     });
-    console.log(response);
     return retrieveErrors(response.status, response.data);
   } catch (e) {
     return retrieveErrors(e.response.status, e.response.data.result);
@@ -94,9 +92,37 @@ const registerUser = async (username, name, surname, password) => {
     });
     return retrieveErrors(response.status, response.data);
   } catch (e) {
-    console.log({ e });
     return retrieveErrors(e.response.status, e.response.data.result);
   }
 };
 
-export { postLogin, registerUser };
+async function retrieveAllProducts() {
+  try {
+    const response = await axios.get("/product/all");
+
+    //TODO DA RIMUOVERE ASSOLULATMENTE!!!
+    response.data[0].quantity = Math.floor(Math.random() * 30);
+    response.data[1].quantity = Math.floor(Math.random() * 30);
+    response.data[2].quantity = Math.floor(Math.random() * 30);
+    response.data[3].quantity = Math.floor(Math.random() * 30);
+
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.response.status, e.response.data.result);
+  }
+}
+
+async function retrieveSingleProduct(id) {
+  try {
+    const response = await axios.get("/product/id/" + id);
+
+    //TODO DA RIMUOVERE ASSOLULATMENTE!!!
+    response.data.quantity = Math.floor(Math.random() * 30);
+
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.response.status, e.response.dsta.result);
+  }
+}
+
+export { postLogin, registerUser, retrieveAllProducts, retrieveSingleProduct };

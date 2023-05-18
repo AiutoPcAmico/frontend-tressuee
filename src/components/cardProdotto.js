@@ -29,7 +29,8 @@ function CardProdotto({ singleProduct, indice }) {
       }
       style={{ width: "18rem" }}
       onClick={() => {
-        navigateToDetails(singleProduct.id);
+        //navigateToDetails(singleProduct.id);
+        navigateToDetails(singleProduct.id_product);
       }}
     >
       <img
@@ -40,16 +41,22 @@ function CardProdotto({ singleProduct, indice }) {
       />
 
       <div className="card-body">
-        <h5 className="card-title">{singleProduct.name}</h5>
+        <h5 className="card-title">
+          {/*singleProduct.name*/}
+          {singleProduct.prod_name}
+        </h5>
         <p className="card-text">
-          {(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)} €
+          {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
+          {/*€*/}
+          {(Math.round(singleProduct.unit_price * 100) / 100).toFixed(2)} €
         </p>
         <p className="card-text">Affrettati! La spedizione è gratuita!</p>
 
         <button
           className="btn btn-outline-success nav2button"
           onClick={() => {
-            navigateToDetails(singleProduct.id);
+            //navigateToDetails(singleProduct.id);
+            navigateToDetails(singleProduct.id_product);
           }}
         >
           Visualizza i dettagli!

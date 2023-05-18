@@ -4,12 +4,16 @@ export const sessionInfo = createSlice({
   name: "sessionInfo",
   initialState: {
     user: {},
+    sessionStarted: null,
+    sessionExpire: null,
     sessionToken: null,
   },
   reducers: {
-    setSessionToken: (state, actions) => {
+    setSessionDetails: (state, actions) => {
       //check if i have already the item in the array
-      console.log(actions.payload.sessionToken);
+      console.log(actions.payload.sessionStarted);
+      state.sessionStarted = actions.payload.sessionStarted;
+      state.sessionExpire = actions.payload.sessionExpire;
       state.sessionToken = actions.payload.sessionToken;
     },
 
@@ -32,12 +36,14 @@ export const sessionInfo = createSlice({
       console.log("session destroyed");
       state.user = {};
       state.sessionToken = null;
+      state.sessionExpire = null;
+      state.sessionStarted = null;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSessionToken, setSessionUser, destroySession } =
+export const { setSessionDetails, setSessionUser, destroySession } =
   sessionInfo.actions;
 
 export default sessionInfo.reducer;

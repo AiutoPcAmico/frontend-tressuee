@@ -76,7 +76,11 @@ function QuantitySelector({ initialQuantity, setUpperQuantity, prodQuantity }) {
         onBlur={(event) => {
           cambiaquantita(event);
         }}
-        style={{ width: "100px", flex: "none" }}
+        style={
+          {
+            /*width: "100px", flex: "none" */
+          }
+        }
       />
       <div className="input-group-append">
         <button

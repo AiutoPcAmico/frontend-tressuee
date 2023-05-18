@@ -3,10 +3,12 @@ import { DarkModeContext } from "../theme/DarkModeContext";
 import logo from "../img/logo.png";
 import { useNavigate } from "react-router-dom";
 import "./navbars.css";
+import { useSelector } from "react-redux";
 
 function FirstNavbar({ selezionato, setSelezionato }) {
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   const navigate = useNavigate();
+  const access = useSelector((state) => state.sessionInfo.sessionToken);
 
   const click = (bott) => {
     setSelezionato(bott);
@@ -36,23 +38,43 @@ function FirstNavbar({ selezionato, setSelezionato }) {
       </a>
 
       <ul className=" navbar-nav ml-auto mt-2 mt-lg-0 upper-navbar">
-        <li className="nav-item ">
-          <button
-            className={
-              selezionato === "account"
-                ? "btn btn-outline-success " +
-                  (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
-                : "btn btn-outline-success " +
-                  (darkMode ? "nav1buttonl" : "nav1button")
-            }
-            onClick={() => {
-              click("login");
-            }}
-          >
-            <i className="bi bi-incognito"></i>
-          </button>
-        </li>
+        {!access && (
+          <li className="nav-item ">
+            <button
+              className={
+                selezionato === "login"
+                  ? "btn btn-outline-success " +
+                    (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
+                  : "btn btn-outline-success " +
+                    (darkMode ? "nav1buttonl" : "nav1button")
+              }
+              onClick={() => {
+                click("login");
+              }}
+            >
+              <i className="bi bi-incognito"></i>
+            </button>
+          </li>
+        )}
 
+        {access && (
+          <li className="nav-item ">
+            <button
+              className={
+                selezionato === "account"
+                  ? "btn btn-outline-success " +
+                    (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
+                  : "btn btn-outline-success " +
+                    (darkMode ? "nav1buttonl" : "nav1button")
+              }
+              onClick={() => {
+                click("account");
+              }}
+            >
+              <i class="bi bi-person"></i>
+            </button>
+          </li>
+        )}
         <li className="nav-item ml-2">
           <button
             className={

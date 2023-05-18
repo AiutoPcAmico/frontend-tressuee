@@ -11,7 +11,8 @@ export const cartOperations = createSlice({
       console.log(state.listCart);
       console.log(actions.payload.id);
       const index = state.listCart.findIndex((el) => {
-        return el.productId === actions.payload.id;
+        //return el.productId === actions.payload.id;
+        return el.id_product === actions.payload.id;
       });
 
       console.log(state.listCart);
@@ -23,7 +24,8 @@ export const cartOperations = createSlice({
       } else {
         console.log("prodotto non presente, lo aggiungo!");
         state.listCart.push({
-          productId: actions.payload.id,
+          //productId: actions.payload.id,
+          id_product: actions.payload.id,
           quantity: actions.payload.quantity,
         });
       }
@@ -31,7 +33,7 @@ export const cartOperations = createSlice({
 
     updateItem: (state, actions) => {
       const objIndex = state.listCart.findIndex(
-        (obj) => obj.productId === actions.payload.id
+        (obj) => obj.id_product === actions.payload.id
       );
 
       state.listCart[objIndex].quantity = actions.payload.quantity;
@@ -39,7 +41,7 @@ export const cartOperations = createSlice({
     },
     removeItem: (state, actions) => {
       const index = state.listCart.findIndex(
-        (el) => el.productId === actions.payload.id
+        (el) => el.id_product === actions.payload.id
       );
       console.log(index);
       if (index > -1) {
