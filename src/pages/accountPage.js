@@ -148,7 +148,7 @@ function AccountPage() {
                         >
                           Email*
                         </label>
-                        <div class="col-md-9">
+                        <div className="col-md-9">
                           <input
                             type="email"
                             disabled={!isOnModify}
@@ -471,7 +471,7 @@ function AccountPage() {
                 }
                 onClick={modifyInfo}
               >
-                <i class="bi bi-pencil"></i>
+                <i className="bi bi-pencil"></i>
                 {" modifica"}
               </button>
             )}
@@ -484,7 +484,7 @@ function AccountPage() {
                 }
                 onClick={confirmSave}
               >
-                <i class="bi bi-check"></i>
+                <i clasNames="bi bi-check"></i>
                 {" salva"}
               </button>
             )}

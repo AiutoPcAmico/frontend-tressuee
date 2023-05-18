@@ -27,7 +27,7 @@ function CardMappa({ posizione, set }) {
             className="card-subtitle mb-2 small"
             style={!darkMode ? { color: "#c9de8c" } : { color: "#39813f" }}
           >
-            <i class="bi bi-geo-alt"></i>
+            <i className="bi bi-geo-alt"></i>
             {" " + posizione.location}
           </p>
           <p className="card-text small">{posizione.description}</p>

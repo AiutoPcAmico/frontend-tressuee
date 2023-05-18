@@ -7,7 +7,7 @@ pulsante toggle sidebar fisso sotto navbar  con schermo piccolo e navbar aperta
 
 accanto indirizzo icona posizione
 
-in account password non obbligatoria 
+in account password non obbligatoria -> se cambia richiedere password vecchia -> db controlla
 
 vercel (per online)
 

@@ -177,7 +177,7 @@ function LoginCardComponent() {
         </button>
 
         {errorLogin !== "" && (
-          <div class="alert alert-danger">
+          <div className="alert alert-danger">
             <strong>Errore!</strong>
             <br></br>
             {errorLogin}.
