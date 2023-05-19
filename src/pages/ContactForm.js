@@ -1,3 +1,4 @@
+/*
 import React from "react";
 const ContactForm = () => {
   const [formStatus, setFormStatus] = React.useState("Send");
@@ -42,4 +43,19 @@ const ContactForm = () => {
     </div>
   );
 };
+export { ContactForm }; */
+
+function ContactForm() {
+  return (
+    <div>
+      <img src={require("../img/gmail_new_logo_icon_159149.png")} alt="logo" />
+
+      <img
+        src={require("../img/linkedin-logo-linkedin-icon-transparent-free-png.png")}
+        alt="logo"
+      />
+    </div>
+  );
+}
+
 export { ContactForm };
