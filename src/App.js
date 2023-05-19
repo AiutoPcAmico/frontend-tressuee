@@ -29,8 +29,6 @@ Search
   */
 
   return (
-
-
     <div
       className={
         "App App-background " + (darkMode ? "light-mode" : "dark-mode")
@@ -46,9 +44,7 @@ Search
         setSelezionato={setSelezionato}
       ></UnderNavBar>
 
-
       <Routes>
-
         <Route index element={<HomePages />} />
         <Route path="/home" element={<Navigate replace to="/" />} />
         <Route path="/contacts" element={<ContactForm />} />
@@ -56,10 +52,8 @@ Search
         <Route path="/maps" element={<TowersMap />} />
         <Route path="/about" element={<About />} />
         <Route path="/*" element={<Error404 />} />
-
       </Routes>
     </div>
-
   );
 }
 
