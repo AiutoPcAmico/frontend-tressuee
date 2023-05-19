@@ -13,17 +13,7 @@ function CardOrders({ order }) {
     >
       <div className="row no-gutters">
         <div className="col-md-8">
-          <div className="card-body">
-            <h5 className="card-title">{order.id_order}</h5>
-            <p className="card-text">
-              {/*Prezzo Unitario: {product.unitPrice.toFixed(2)} €*/}
-              Totale: {order.price.toFixed(2)} €
-            </p>
-            <div className="card-text">Corriere: {order.courier_name}</div>
-            <p className="card-text">
-              {/*Totale Parziale: {(product.unitPrice * quantity).toFixed(2)} €*/}
-            </p>
-          </div>
+          <div className="card-body"></div>
         </div>
       </div>
       <div className="d-flex flex-wrap justify-content-center row">
