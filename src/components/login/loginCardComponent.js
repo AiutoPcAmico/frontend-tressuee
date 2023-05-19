@@ -52,10 +52,10 @@ function LoginCardComponent() {
 
   useEffect(() => {
     var isUsernameValid = isValidEmail(username);
-    console.log(isUsernameValid);
+    //console.log(isUsernameValid);
     if (isUsernameValid && username && password) {
       setCanIDoLogin(true);
-      console.log("tuttovqalido!");
+      //console.log("tuttovqalido!");
     } else {
       setCanIDoLogin(false);
     }
@@ -87,7 +87,7 @@ function LoginCardComponent() {
           className="fadeIn second"
           required={true}
           onChange={(el) => {
-            console.log("username " + el.target.value);
+            //console.log("username " + el.target.value);
             setUsername(el.target.value);
           }}
           style={{
@@ -145,7 +145,7 @@ function LoginCardComponent() {
           className="fadeIn third"
           required={true}
           onChange={(el) => {
-            console.log("passwoed " + el.target.value);
+            //console.log("passwoed " + el.target.value);
             setPassword(el.target.value);
           }}
           style={{

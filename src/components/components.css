@@ -181,3 +181,8 @@
   width: -webkit-fill-available;
   position: relative;
 }
+
+.innercardorders{
+  background-color: transparent;
+  border-radius: 10px;
+}

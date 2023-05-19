@@ -72,7 +72,7 @@ function ListProducts() {
     <div>
       <div className="sfondo1 mt-2">lista dei filtri!</div>
 
-      {error !== "" && (
+      {(error !== "") && (listProduct!==null && listProduct.length>0) && (
         <div
           className="alert alert-danger mx-auto mt-4"
           role="alert"
@@ -84,6 +84,7 @@ function ListProducts() {
       )}
 
       <div className="d-flex flex-wrap justify-content-center">
+        {listProduct!==null && !(listProduct.length > 0) && <p>al momento prodotti non disponibili</p>}
         {listProduct !== null &&
           listProduct.map((p, i) => {
             return (

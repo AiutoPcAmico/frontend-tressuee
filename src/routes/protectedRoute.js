@@ -10,7 +10,7 @@ function ProtectedRoute({ children }) {
   if (!access) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-  console.log(children);
+  //console.log(children);
 
   return children;
 }

@@ -1,25 +1,23 @@
 import { DarkModeContext } from "../theme/DarkModeContext";
 import { useContext } from "react";
+import DialogOrderDetail from "./dialogOrderDetail";
 
 function CardOrders({ order }) {
   const { darkMode } = useContext(DarkModeContext);
 
-  console.log(order);
+  //console.log(order);
 
   return (
+    <div>
     <div
       className={"card mb-3 " + (darkMode ? "sfondocard1" : "sfondocard3")}
       style={{ width: "100%" }}
+      data-toggle="modal" data-target="#exampleModal"
     >
-      <div className="row no-gutters">
-        <div className="col-md-8">
-          <div className="card-body"></div>
-        </div>
-      </div>
-      <div className="d-flex flex-wrap justify-content-center row">
+      
+      <div className="d-flex flex-wrap justify-content-center row m-0">
         <div
-          className={"card col-sm-4 col-md-3 col-lg-2 p-0"}
-          style={{ backgroundColor: "gray" }}
+          className={"card col-sm-4 col-md-3 col-lg-2 p-0 innercardorders"}
         >
           <div className="card-body p-1 row">
             <p className="card-title col-lg-6">{"Codice"}</p>
@@ -30,8 +28,7 @@ function CardOrders({ order }) {
           </div>
         </div>
         <div
-          className={"card col-sm-4 col-md-3 col-lg-3 col-xl-2 p-0"}
-          style={{ backgroundColor: "gray" }}
+          className={"card col-sm-4 col-md-3 col-lg-3 col-xl-2 p-0 innercardorders"}
         >
           <div className="card-body p-1 row">
             <p className="card-title col-lg-6">{"Corriere"}</p>
@@ -42,8 +39,7 @@ function CardOrders({ order }) {
           </div>
         </div>
         <div
-          className={"card col-sm-4 col-md-3 col-lg-2 p-0"}
-          style={{ backgroundColor: "gray" }}
+          className={"card col-sm-4 col-md-3 col-lg-2 p-0 innercardorders"}
         >
           <div className="card-body p-1 row">
             <p className="card-title col-lg-5">{"Stato"}</p>
@@ -54,8 +50,7 @@ function CardOrders({ order }) {
           </div>
         </div>
         <div
-          className={"card col-sm-4 col-md-3 col-lg-3 col-xl-2 p-0"}
-          style={{ backgroundColor: "gray" }}
+          className={"card col-sm-4 col-md-3 col-lg-3 col-xl-2 p-0 innercardorders"}
         >
           <div className="card-body p-1 row">
             <p className="card-title col-lg-6">{"Consegna stimata"}</p>
@@ -66,8 +61,7 @@ function CardOrders({ order }) {
           </div>
         </div>
         <div
-          className={"card col-sm-4 col-md-3 col-lg-2 p-0"}
-          style={{ backgroundColor: "gray" }}
+          className={"card col-sm-4 col-md-3 col-lg-2 p-0 innercardorders"}
         >
           <div className="card-body p-1 row">
             <p className="card-title col-lg-7">{"Tracking"}</p>
@@ -78,8 +72,7 @@ function CardOrders({ order }) {
           </div>
         </div>
         <div
-          className={"card col-sm-4 col-md-3 col-lg-2 p-0"}
-          style={{ backgroundColor: "gray" }}
+          className={"card col-sm-4 col-md-3 col-lg-2 p-0 innercardorders"}
         >
           <div className="card-body p-1 row">
             <p className="card-title col-lg-6">{"Totale"}</p>
@@ -131,6 +124,13 @@ function CardOrders({ order }) {
           </div>
         </div>
       </div>*/}
+
+
+
+    </div>
+    {/*modal */}
+      <DialogOrderDetail ordine={order}></DialogOrderDetail>
+
     </div>
   );
 }
