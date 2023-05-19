@@ -1,4 +1,4 @@
-la nostra storia
+## - la nostra storia
 Siamo una piccola Startup innovativa,
  che voleva rimediare all'inquinamento
  dovuto all'utilizzo dei singoli pacchetti
@@ -17,7 +17,7 @@ biodegradabile e un sistema
 innovativo per la suo ricarica!
 Cosa aspetti: scopri i nostri prodotti!
 
-Scatola
+## - Scatola
 La scatola è tecnologicamete 
 innovativa, stampata in pla, un 
 materiale eco-friendly, inoltre
@@ -32,7 +32,7 @@ Per ultimo ma non meno importante
 la scatola è completamente
 customizzabile.
 
-torre
+## torre
 Le torri servono per fare il pieno di 
 fazzoletti alla vostra scatola.
 La torre 'domestica' è pratica e
@@ -44,7 +44,7 @@ per non rimanere mai a corto
 di fazzoletti (disponibili sulla
 mappa del nostro sito).
 
-ricariche
+## ricariche
 I nostri fazzoletti hanno 4 veli, 
 sono fatti completamente 
 da materiale riciclato e
@@ -54,7 +54,7 @@ Le ricariche hanno varie dimensioni:
 più fazzoletti = più risparmio
 
 
-altro volantino + riassunto
+### altro volantino + riassunto
 Siamo una piccola Startup innovativa, che vuole 
 rimediare all'inquinamento dovuto all'utilizzo dei 
 pacchetti di fazzoletti.
