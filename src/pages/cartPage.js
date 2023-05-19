@@ -62,7 +62,6 @@ const CartPage = ({ totalProducts }) => {
         setError(element.messageError);
       } else {
         setError("");
-        console.log(element.data);
         setProducts(element.data);
       }
     });

@@ -62,7 +62,7 @@ function LeafletMap({ positions, isFixed, positionSelected }) {
           return (
             <Marker position={[location.latitude, location.longitude]}>
               <Popup>
-                <b>{location.title}</b> <br /> <i>{location.location}</i>
+                <b>{location.title}</b> <br /> <i>{location.address}</i>
                 <br></br>
                 <br></br>
                 {location.description}

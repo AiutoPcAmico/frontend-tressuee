@@ -41,6 +41,9 @@ function FirstNavbar({ selezionato, setSelezionato }) {
         {!access && (
           <li className="nav-item ">
             <button
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Tooltip on bottom"
               className={
                 selezionato === "login"
                   ? "btn btn-outline-success " +
@@ -52,6 +55,7 @@ function FirstNavbar({ selezionato, setSelezionato }) {
                 click("login");
               }}
             >
+              <span style={{ fontSize: "11px" }}>Login </span>
               <i className="bi bi-incognito"></i>
             </button>
           </li>
@@ -60,6 +64,9 @@ function FirstNavbar({ selezionato, setSelezionato }) {
         {access && (
           <li className="nav-item ">
             <button
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Tooltip on bottom"
               className={
                 selezionato === "account"
                   ? "btn btn-outline-success " +
@@ -71,26 +78,31 @@ function FirstNavbar({ selezionato, setSelezionato }) {
                 click("account");
               }}
             >
-              <i class="bi bi-person"></i>
+              <span style={{ fontSize: "11px" }}>Account </span>
+              <i className="bi bi-person"></i>
             </button>
           </li>
         )}
-        <li className="nav-item ml-2">
-          <button
-            className={
-              selezionato === "ordini"
-                ? "btn btn-outline-success " +
-                  (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
-                : "btn btn-outline-success " +
-                  (darkMode ? "nav1buttonl" : "nav1button")
-            }
-            onClick={() => {
-              click("ordini");
-            }}
-          >
-            <i className="bi bi-bag"></i>
-          </button>
-        </li>
+        {access && (
+          <li className="nav-item ml-2">
+            <button
+              className={
+                selezionato === "orders"
+                  ? "btn btn-outline-success " +
+                    (darkMode ? "nav1buttonselectedl" : "nav1buttonselected")
+                  : "btn btn-outline-success " +
+                    (darkMode ? "nav1buttonl" : "nav1button")
+              }
+              onClick={() => {
+                click("orders");
+              }}
+            >
+              <span style={{ fontSize: "11px" }}>Ordini </span>
+
+              <i className="bi bi-bag"></i>
+            </button>
+          </li>
+        )}
 
         <li className="nav-item ml-2">
           <button
@@ -105,6 +117,8 @@ function FirstNavbar({ selezionato, setSelezionato }) {
               click("cart");
             }}
           >
+            <span style={{ fontSize: "11px" }}>Carrello </span>
+
             <i className="bi bi-cart"></i>
           </button>
         </li>
@@ -116,6 +130,8 @@ function FirstNavbar({ selezionato, setSelezionato }) {
               toggleDarkMode();
             }}
           >
+            <span style={{ fontSize: "11px" }}>Tema </span>
+
             <i
               className={!darkMode ? "bi-brightness-high " : "bi-moon-fill"}
             ></i>

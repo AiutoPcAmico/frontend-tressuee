@@ -74,7 +74,7 @@ function ListProducts() {
 
       {error !== "" && (
         <div
-          class="alert alert-danger mx-auto mt-4"
+          className="alert alert-danger mx-auto mt-4"
           role="alert"
           style={{ width: "300px", textAlign: "center" }}
         >

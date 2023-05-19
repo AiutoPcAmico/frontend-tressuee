@@ -10,11 +10,6 @@ function CardCarrello({ product, quantity }) {
 
   //console.log(product);
 
-  function getImage() {
-    const picture = product.image;
-    return picture;
-  }
-
   return (
     <div
       className={"card mb-3 " + (darkMode ? "sfondocard1" : "sfondocard3")}
@@ -23,7 +18,7 @@ function CardCarrello({ product, quantity }) {
       <div className="row no-gutters">
         <div className="col-md-4">
           <img
-            src={getImage()}
+            src={require(`../img/${product.image}`)}
             className="card-img-top mx-auto mt-1"
             alt={`${product.category} icon`}
             style={{ width: "150px" }}

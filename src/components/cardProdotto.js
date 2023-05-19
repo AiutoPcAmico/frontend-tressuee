@@ -6,11 +6,6 @@ function CardProdotto({ singleProduct, indice }) {
   const { darkMode } = useContext(DarkModeContext);
   const navigate = useNavigate();
 
-  function getImage() {
-    const picture = singleProduct.image;
-    return picture;
-  }
-
   function navigateToDetails(id) {
     navigate("/shop/productDetails/" + id);
   }
@@ -34,7 +29,7 @@ function CardProdotto({ singleProduct, indice }) {
       }}
     >
       <img
-        src={getImage()}
+        src={require(`../img/${singleProduct.image}`)}
         className="card-img-top mx-auto mt-1"
         alt={`${singleProduct.category} icon`}
         style={{ width: "150px" }}

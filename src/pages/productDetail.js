@@ -102,7 +102,6 @@ function ProductDetail() {
     //retrieveDetailsOfProduct(idOfProduct).then((found) => {
     retrieveSingleProduct(idOfProduct).then((element) => {
       if (element.isError) {
-        setError("");
         setError(element.messageError);
       } else {
         setError("");
@@ -145,8 +144,8 @@ function ProductDetail() {
               >
                 <img
                   className="m-2"
-                  src={/*product.foto*/ product.image}
-                  alt="Treessue logo"
+                  src={require(`../img/${product.image}`)}
+                  alt={product.category + " logo"}
                   style={{ maxWidth: "100%" }}
                 ></img>
               </div>

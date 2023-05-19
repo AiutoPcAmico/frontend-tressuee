@@ -46,6 +46,12 @@ function retrieveErrors(statusCode, data) {
         "L'utente indicato risulta già iscritto al portale.\nRiprova!";
       break;
 
+    case 426:
+      isError = true;
+      messageError =
+        "L'account è stato disabilitato.\nContattare il supporto Treessue";
+      break;
+
     case 500:
       isError = true;
       messageError = "Errore del Server.\nRiprova!";
@@ -121,8 +127,64 @@ async function retrieveSingleProduct(id) {
 
     return retrieveErrors(response.status, response.data);
   } catch (e) {
-    return retrieveErrors(e.response.status, e.response.dsta.result);
+    return retrieveErrors(e.response.status, e.response.data.result);
   }
 }
 
-export { postLogin, registerUser, retrieveAllProducts, retrieveSingleProduct };
+async function retrievePublicTowers() {
+  try {
+    const response = await axios.get("/tower/all/public");
+
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.response.status, e.response.data.result);
+  }
+}
+
+async function retrieveUserOrders() {
+  var orders = { status: 200 };
+  orders.data = [
+    {
+      id_order: 1,
+      order_date: "Fazzoletti 10",
+      order_status: "in lavorazione",
+      courier_name: "poste italianeeeeeeee",
+      tracking_code: 10,
+      start_shipping_date: "",
+      expected_delivery_date: "",
+      delivery_data: "",
+      original_price: 10,
+      discount: 90,
+      price: 1,
+    },
+    {
+      id_order: 2,
+      order_date: "Fazzoletti 200",
+      order_status: "consegnato",
+      courier_name: "brt",
+      tracking_code: 11,
+      start_shipping_date: "",
+      expected_delivery_date: "",
+      delivery_data: "",
+      original_price: 100,
+      discount: 90,
+      price: 10,
+    },
+  ];
+  try {
+    const response = orders;
+
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.response.status, e.response.data.result);
+  }
+}
+
+export {
+  postLogin,
+  registerUser,
+  retrieveAllProducts,
+  retrieveSingleProduct,
+  retrievePublicTowers,
+  retrieveUserOrders,
+};

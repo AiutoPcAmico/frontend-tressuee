@@ -28,7 +28,8 @@ function CardMappa({ posizione, set }) {
             style={!darkMode ? { color: "#c9de8c" } : { color: "#39813f" }}
           >
             <i className="bi bi-geo-alt"></i>
-            {" " + posizione.location}
+            {/*" " + posizione.location*/}
+            {" " + posizione.address}
           </p>
           <p className="card-text small">{posizione.description}</p>
           <p className="card-text">
@@ -37,7 +38,8 @@ function CardMappa({ posizione, set }) {
             >
               {"Fazzoletti "}
             </span>
-            {posizione.tissuenumber}
+            {/*posizione.tissuenumber*/}
+            {posizione.tissue_quantity}
           </p>
         </div>
       </div>
