@@ -106,11 +106,7 @@ async function retrieveAllProducts() {
   try {
     const response = await axios.get("/product/all");
 
-    //TODO DA RIMUOVERE ASSOLULATMENTE!!!
-    response.data[0].quantity = Math.floor(Math.random() * 30);
-    response.data[1].quantity = Math.floor(Math.random() * 30);
-    response.data[2].quantity = Math.floor(Math.random() * 30);
-    response.data[3].quantity = Math.floor(Math.random() * 30);
+    //todo aggiungere quantity corretta
 
     return retrieveErrors(response.status, response.data);
   } catch (e) {
@@ -122,8 +118,7 @@ async function retrieveSingleProduct(id) {
   try {
     const response = await axios.get("/product/id/" + id);
 
-    //TODO DA RIMUOVERE ASSOLULATMENTE!!!
-    response.data.quantity = Math.floor(Math.random() * 30);
+    //todo aggiungere la quantity corretta
 
     return retrieveErrors(response.status, response.data);
   } catch (e) {
