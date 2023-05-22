@@ -547,9 +547,8 @@ function AccountPage() {
             <img
               //src={getImage()}
               className="card-img-top mx-auto mt-1"
-              //alt={`${singleProduct.category} icon`}
+              alt={` icon`}
               style={{ width: "150px" }}
-              alt="icon"
             />
 
             <div className="card-body">
@@ -580,7 +579,7 @@ function AccountPage() {
             <img
               //src={getImage()}
               className="card-img-top mx-auto mt-1"
-              //alt={`${singleProduct.category} icon`}
+              alt={` icon`}
               style={{ width: "150px" }}
             />
 
@@ -615,7 +614,7 @@ function AccountPage() {
             <img
               //src={getImage()}
               className="card-img-top mx-auto mt-1"
-              //alt={`${singleProduct.category} icon`}
+              alt={` icon`}
               style={{ width: "150px" }}
             />
 
@@ -647,7 +646,7 @@ function AccountPage() {
             <img
               //src={getImage()}
               className="card-img-top mx-auto mt-1"
-              //alt={`${singleProduct.category} icon`}
+              alt={` icon`}
               style={{ width: "150px" }}
             />
 
@@ -679,7 +678,7 @@ function AccountPage() {
             <img
               //src={getImage()}
               className="card-img-top mx-auto mt-1"
-              //alt={`${singleProduct.category} icon`}
+              alt="pippo"
               style={{ width: "150px" }}
             />
 

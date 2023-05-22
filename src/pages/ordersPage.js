@@ -1,22 +1,7 @@
 import { DarkModeContext } from "../theme/DarkModeContext";
-import { useContext, useEffect, useMemo, useState } from "react";
-import base_images from "../img/base_image_temp.json";
+import { useContext, useEffect, useState } from "react";
 import CardOrders from "../components/cardOrders";
-import { useSelector } from "react-redux";
 import { retrieveUserOrders } from "../api/indexTreessueApi";
-
-const tempOrders = [
-  {
-    id_order: 1,
-    name: "Fazzoletti 10",
-    category: "fazzoletti",
-    description: "Una descrizione per fazzoletti da 10",
-    unitPrice: 10,
-    isActive: true,
-    quantity: 23,
-    image: base_images.fazzoletti,
-  },
-];
 
 const OrdersPage = ({ totalOrders }) => {
   const { darkMode } = useContext(DarkModeContext);
@@ -38,6 +23,16 @@ const OrdersPage = ({ totalOrders }) => {
 
   return (
     <div>
+      {error !== "" && (
+        <div
+          className="alert alert-danger mx-auto mt-4"
+          role="alert"
+          style={{ width: "300px", textAlign: "center" }}
+        >
+          <b>Attenzione!</b>
+          <p>{error}</p>
+        </div>
+      )}
       <div className="detailsPage">
         <h2 className={darkMode ? "testolight" : "testodark"}>Ordini</h2>
         <div className=" text flex-column" style={{}}>

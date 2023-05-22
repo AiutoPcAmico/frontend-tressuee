@@ -9,7 +9,7 @@ export const cartOperations = createSlice({
     addItem: (state, actions) => {
       //check if i have already the item in the array
       console.log(state.listCart);
-      console.log(actions.payload.id);
+      console.log(actions.payload);
       const index = state.listCart.findIndex((el) => {
         //return el.productId === actions.payload.id;
         return el.id_product === actions.payload.id;

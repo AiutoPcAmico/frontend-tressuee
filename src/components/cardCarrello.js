@@ -26,7 +26,7 @@ function CardCarrello({ product, quantity }) {
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <h5 className="card-title">{product.name}</h5>
+            <h5 className="card-title">{product.prod_name}</h5>
             <p className="card-text">
               {/*Prezzo Unitario: {product.unitPrice.toFixed(2)} €*/}
               Prezzo Unitario: {product.unit_price.toFixed(2)} €
@@ -43,7 +43,7 @@ function CardCarrello({ product, quantity }) {
                     );
                   }
                 }}
-                prodQuantity={product.quantity}
+                prodQuantity={product.available_quantity}
               ></QuantitySelector>
 
               <button

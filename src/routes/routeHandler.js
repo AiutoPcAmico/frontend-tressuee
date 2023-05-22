@@ -10,13 +10,10 @@ import { LoginPage } from "../pages/loginPage";
 import { Error404 } from "../pages/error404";
 import { AccountPage } from "../pages/accountPage";
 import { TestingPage } from "../pages/testingPage";
-import { useSelector } from "react-redux";
 import { ProtectedRoute } from "./protectedRoute";
 import { OrdersPage } from "../pages/ordersPage";
 
 function RouterHandler({ setSelezionato }) {
-  const session = useSelector((state) => state.sessionInfo.sessionExpire);
-
   return (
     <Routes>
       <Route index element={<HomePages setSelezionato={setSelezionato} />} />
