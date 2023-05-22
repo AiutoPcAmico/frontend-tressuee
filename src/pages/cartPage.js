@@ -8,7 +8,7 @@ const CartPage = ({ totalProducts }) => {
   const { darkMode } = useContext(DarkModeContext);
   const cart = useSelector((state) => state.cart.listCart); //prodoti nel carrello
   const [products, setProducts] = useState([]); //lista tutti prodotti
-  const [error, setError] = useState();
+  const [error, setError] = useState("Caricamento dei dati in corso!");
 
   useEffect(() => {
     retrieveAllProducts().then((element) => {

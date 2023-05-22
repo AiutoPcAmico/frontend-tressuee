@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { DarkModeContext } from "../theme/DarkModeContext";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../stores/cartOperations";
 import QuantitySelector from "../components/quantitySelector";
 import { MessageDialog } from "../components/messageDialog";
-import { retrieveSingleProduct } from "../api/indexTreessueApi";
+import { retrieveSingleProduct, saveIntoCart } from "../api/indexTreessueApi";
 import { useWindowDimensions } from "../utils/useWindowDimensions";
 
 function ProductDetail() {
@@ -19,6 +19,7 @@ function ProductDetail() {
   const [heightText, setHeightText] = useState({
     text: 0,
     block: 0,
+    scroll: 0,
   });
   const [error, setError] = useState(
     "Caricamento in corso dei dati,\nAttendere prego"
@@ -34,6 +35,7 @@ function ProductDetail() {
     image: "",
   });
   const idOfProduct = parseInt(params.id);
+  const access = useSelector((state) => state.sessionInfo?.sessionToken);
 
   useEffect(() => {
     retrieveSingleProduct(idOfProduct).then((element) => {
@@ -49,14 +51,39 @@ function ProductDetail() {
 
   useEffect(() => {
     window.addEventListener("resize", getListSize);
+    document.addEventListener("scroll", getListSize);
   }, []);
 
   const getListSize = () => {
     const heightText = document.getElementById("scrollableText").scrollHeight;
     const offsetMax = document.getElementById("scrollableText").offsetHeight;
+    const prova = document.getElementById("scrollableText").scrollTop;
 
-    setHeightText({ text: heightText, block: offsetMax });
+    setHeightText({ text: heightText, block: offsetMax, scroll: prova });
+
+    //console.log(prova);
   };
+
+  function addToCart(idproduct, quantity) {
+    console.log({ idproduct, quantity, access });
+
+    if (access) {
+      //se loggato lo salvo sia in locale che tramite api nel DB
+      saveIntoCart(idproduct, quantity).then((element) => {
+        if (element.isError) {
+          setError(element.messageError);
+        } else {
+          setError("");
+          dispatch(addItem({ id: idproduct, quantity: quantity }));
+          document.getElementById("buttonModal").click();
+        }
+      });
+    } else {
+      //non loggato, lo salvo solo in locale
+      dispatch(addItem({ id: idproduct, quantity: quantity }));
+      document.getElementById("buttonModal").click();
+    }
+  }
 
   return (
     <div>
@@ -77,7 +104,7 @@ function ProductDetail() {
 
           <h2 className={darkMode ? "testolight" : "testodark"}>
             {/*product.name*/}
-            {`${product.prod_name}`}
+            {product.prod_name}
             {/*height*/}
           </h2>
           <div className=" text flex-column" style={{}}>
@@ -98,6 +125,7 @@ function ProductDetail() {
               </div>
               <div
                 ref={divref}
+                onScroll={getListSize}
                 id="scrollableText"
                 className={
                   "col-sm-4 col-12 " +
@@ -106,9 +134,25 @@ function ProductDetail() {
                   (wi < 576
                     ? ""
                     : heightText.text > heightText.block
-                    ? darkMode
-                      ? "inner-shadow-light"
-                      : "inner-shadow-dark"
+                    ? heightText.scroll !== 0 &&
+                      heightText.text - heightText.block >
+                        Math.floor(heightText.scroll) + 1
+                      ? darkMode
+                        ? "inner-shadow-lightb"
+                        : "inner-shadow-darkb"
+                      : ""
+                    : "") +
+                  " " +
+                  (wi < 576
+                    ? ""
+                    : heightText.text > heightText.block
+                    ? heightText.scroll !== 0 &&
+                      heightText.text - heightText.block <
+                        Math.floor(heightText.scroll) - 1
+                      ? darkMode
+                        ? "inner-shadow-lightt"
+                        : "inner-shadow-darkt"
+                      : ""
                     : "")
                 }
                 style={{ width: "32%", overflowY: "scroll", maxHeight: "60vh" }}
@@ -161,16 +205,18 @@ function ProductDetail() {
                     }
                     onClick={() => {
                       //dispatch(addItem({ id: product.id, quantity: quantity }));
-                      dispatch(
-                        addItem({ id: product.id_product, quantity: quantity })
-                      );
+                      addToCart(product.id_product, quantity);
                     }}
-                    data-toggle="modal"
-                    data-target="#messageDialog"
                   >
                     aggiungi al Carrello
                   </button>
-
+                  <button
+                    id="buttonModal"
+                    style={{ display: "none" }}
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#messageDialog"
+                  ></button>
                   <button
                     type="button"
                     className={

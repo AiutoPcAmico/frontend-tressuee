@@ -106,11 +106,26 @@
   position: fixed;
 }
 
-.inner-shadow-dark {
-  box-shadow: inset 0px 16px 12px -12px rgba(255, 255, 255, 0.5),
-    inset 0px -16px 12px -12px rgba(255, 255, 255, 0.5);
+.inner-shadow-darkb {
+  box-shadow: inset 0px -16px 12px -12px rgba(255, 255, 255, 0.5);
 }
+.inner-shadow-darkt {
+  box-shadow: inset 0px 16px 12px -12px rgba(255, 255, 255, 0.5);
+}
+
+.inner-shadow-dark {
+  box-shadow: inset 0px -16px 12px -12px rgba(255, 255, 255, 0.5),
+    inset 0px 16px 12px -12px rgba(255, 255, 255, 0.5);
+}
+
+.inner-shadow-lightb {
+  box-shadow: inset 0px -16px 12px -12px rgba(0, 0, 0, 0.5);
+}
+.inner-shadow-lightt {
+  box-shadow: inset 0px 16px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
 .inner-shadow-light {
-  box-shadow: inset 0px 16px 12px -12px rgba(0, 0, 0, 0.5),
-    inset 0px -16px 12px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px -16px 12px -12px rgba(0, 0, 0, 0.5),
+    inset 0px 16px 12px -12px rgba(0, 0, 0, 0.5);
 }

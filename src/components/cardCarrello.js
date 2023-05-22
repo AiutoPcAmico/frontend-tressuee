@@ -8,8 +8,6 @@ function CardCarrello({ product, quantity }) {
   const { darkMode } = useContext(DarkModeContext);
   const dispatch = useDispatch();
 
-  //console.log(product);
-
   return (
     <div
       className={"card mb-3 " + (darkMode ? "sfondocard1" : "sfondocard3")}
@@ -36,7 +34,6 @@ function CardCarrello({ product, quantity }) {
                 initialQuantity={quantity}
                 setUpperQuantity={(value) => {
                   if (quantity !== value) {
-                    console.log({ quantity, value });
                     //dispatch(updateItem({ id: product.id, quantity: value }));
                     dispatch(
                       updateItem({ id: product.id_product, quantity: value })

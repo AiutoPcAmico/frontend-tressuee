@@ -175,6 +175,35 @@ async function retrieveUserOrders() {
   }
 }
 
+async function saveIntoCart(idProduct, quantity) {
+  //usata se aggiunto un prodotto al carrello
+  //oopure
+  //utente non loggato con carrello logga
+  let access = JSON.parse(localStorage.getItem("persist:root"));
+  if (access !== null) access = JSON.parse(access.sessionInfo);
+
+  try {
+    const response = await axios.post(
+      "/cart-detail/add",
+      {
+        idProduct: idProduct,
+        quantity: quantity,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + access.sessionToken,
+        },
+      }
+    );
+
+    //todo aggiungere la quantity corretta
+
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.response.status, e.response.data.result);
+  }
+}
+
 export {
   postLogin,
   registerUser,
@@ -182,4 +211,5 @@ export {
   retrieveSingleProduct,
   retrievePublicTowers,
   retrieveUserOrders,
+  saveIntoCart,
 };
