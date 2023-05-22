@@ -1,0 +1,38 @@
+
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .social-icon img {
+    width: 30px; 
+    height: 30px; 
+    margin-right: 5px;
+  }
+  
+  .social-icon span {
+    font-size: 14px; 
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 40vh;
+    padding: 20px;
+    box-sizing: border-box;
+    /*background-color: #f6f6f6;*/
+  } 
+  
+  

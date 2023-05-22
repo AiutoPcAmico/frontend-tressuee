@@ -1,42 +1,69 @@
 import React from "react";
+import instagram from "../img/instagram-icon.png";
+import twitter from "../img/twitter-icon.png";
+import facebook from "../img/facebook-icon.png";
+import linkedin from "../img/linkedin-icon.png";
+import gmail from "../img/gmail-icon.png";
+import { DarkModeContext } from "../theme/DarkModeContext";
+import { useContext } from "react";
 import "../App.css";
+import "./ContactForm.css";
 
 const ContactForm = () => {
+  //const { DarkMode } = useContext(DarkModeContext);
+  //<h2 className={DarkMode ? "testolight" : "testodark"}>contatti</h2>
+  const { darkMode } = useContext(DarkModeContext);
   const handleClick = (url) => {
     window.open(url, "_blank");
   };
 
   return (
-    <div className="social-icons">
-      <div
-        className="social-icon"
-        onClick={() => handleClick("https://www.instagram.com")}
+    <div className="aboutPage">
+      <h2
+        className={"mx-auto " + (darkMode ? "testolight" : "testodark")}
+        style={{ width: "90%", textAlign: "center" }}
       >
-        <img src="../img/instagram-icon.png" alt="Instagram" />
-      </div>
-      <div
-        className="social-icon"
-        onClick={() => handleClick("https://www.facebook.com")}
-      >
-        <img src="../img/facebook-icon.png" alt="Facebook" />
-      </div>
-      <div
-        className="social-icon"
-        onClick={() => handleClick("https://www.linkedin.com")}
-      >
-        <img src="../img/linkedin-icon.png" alt="LinkedIn" />
-      </div>
-      <div
-        className="social-icon"
-        onClick={() => handleClick("https://www.gmail.com")}
-      >
-        <img src="../img/gmail-icon.png" alt="Gmail" />
-      </div>
-      <div
-        className="social-icon"
-        onClick={() => handleClick("https://www.twitter.com")}
-      >
-        <img src="../img/twitter-icon.png" alt="Twitter" />
+        contatti
+      </h2>
+
+      <div className="container">
+        <div className="social-icons">
+          <div
+            className="social-icon"
+            onClick={() => handleClick("https://www.instagram.com")}
+          >
+            <img src={instagram} alt="Instagram" />
+            <span>Instagram</span>
+          </div>
+          <div
+            className="social-icon"
+            onClick={() => handleClick("https://www.facebook.com")}
+          >
+            <img src={facebook} alt="Facebook" />
+            <span>Facebook</span>
+          </div>
+          <div
+            className="social-icon"
+            onClick={() => handleClick("https://www.linkedin.com")}
+          >
+            <img src={linkedin} alt="LinkedIn" />
+            <span>LinkedIn</span>
+          </div>
+          <div
+            className="social-icon"
+            onClick={() => handleClick("https://www.gmail.com")}
+          >
+            <img src={gmail} alt="Gmail" />
+            <span>Gmail</span>
+          </div>
+          <div
+            className="social-icon"
+            onClick={() => handleClick("https://www.twitter.com")}
+          >
+            <img src={twitter} alt="Twitter" />
+            <span>Twitter</span>
+          </div>
+        </div>
       </div>
     </div>
   );
