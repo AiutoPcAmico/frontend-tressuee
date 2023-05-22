@@ -7,6 +7,7 @@ import gmail from "../img/gmail-icon.png";
 import { DarkModeContext } from "../theme/DarkModeContext";
 import { useContext } from "react";
 import "../App.css";
+import "./pages.css";
 import "./ContactForm.css";
 
 const ContactForm = () => {
@@ -26,7 +27,7 @@ const ContactForm = () => {
         contatti
       </h2>
 
-      <div className="container">
+      <div className={"container " + (darkMode ? "sfondo2" : "sfondo1")}>
         <div className="social-icons">
           <div
             className="social-icon"
