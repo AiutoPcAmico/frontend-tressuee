@@ -1,4 +1,5 @@
-import { destroySession } from "../stores/sessionInfo.js";
+import sessionInfo, { destroySession } from "../stores/sessionInfo.js";
+import { store } from "../stores/store.js";
 import axios from "./axios.js";
 
 function retrieveErrors(statusCode, data) {
@@ -24,7 +25,7 @@ function retrieveErrors(statusCode, data) {
       //Unauthorized Access
       isError = true;
       messageError = "La sessione è scaduta.\nPrego, rieffettuare il login.";
-      destroySession();
+      store.dispatch(destroySession());
       break;
 
     case 403:
@@ -179,8 +180,10 @@ async function saveIntoCart(idProduct, quantity) {
   //usata se aggiunto un prodotto al carrello
   //oopure
   //utente non loggato con carrello logga
-  let access = JSON.parse(localStorage.getItem("persist:root"));
-  if (access !== null) access = JSON.parse(access.sessionInfo);
+  //let access = JSON.parse(localStorage.getItem("persist:root"));
+  //if (access !== null) access = JSON.parse(access.sessionInfo);
+
+  const access = store.getState(sessionInfo).sessionInfo.sessionToken;
 
   try {
     const response = await axios.post(
@@ -191,7 +194,7 @@ async function saveIntoCart(idProduct, quantity) {
       },
       {
         headers: {
-          Authorization: "Bearer " + access.sessionToken,
+          Authorization: "Bearer " + access,
         },
       }
     );

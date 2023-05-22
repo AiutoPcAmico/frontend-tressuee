@@ -51,13 +51,19 @@ function ProductDetail() {
 
   useEffect(() => {
     window.addEventListener("resize", getListSize);
-    document.addEventListener("scroll", getListSize);
+    window.addEventListener("scroll", getListSize);
   }, []);
 
   const getListSize = () => {
-    const heightText = document.getElementById("scrollableText").scrollHeight;
-    const offsetMax = document.getElementById("scrollableText").offsetHeight;
-    const prova = document.getElementById("scrollableText").scrollTop;
+    const heightText = document.getElementById("scrollableText")?.scrollHeight
+      ? document.getElementById("scrollableText").scrollHeight
+      : 1;
+    const offsetMax = document.getElementById("scrollableText")?.offsetHeight
+      ? document.getElementById("scrollableText")?.offsetHeight
+      : 1;
+    const prova = document.getElementById("scrollableText")?.scrollTop
+      ? document.getElementById("scrollableText")?.scrollTop
+      : 1;
 
     setHeightText({ text: heightText, block: offsetMax, scroll: prova });
 
@@ -134,9 +140,20 @@ function ProductDetail() {
                   (wi < 576
                     ? ""
                     : heightText.text > heightText.block
-                    ? heightText.scroll !== 0 &&
+                    ? heightText.scroll !== 1 &&
+                      heightText.scroll !== 0 &&
                       heightText.text - heightText.block >
                         Math.floor(heightText.scroll) + 1
+                      ? darkMode
+                        ? "inner-shadow-light"
+                        : "inner-shadow-dark"
+                      : ""
+                    : "") +
+                  " " +
+                  (wi < 576
+                    ? ""
+                    : heightText.text > heightText.block
+                    ? heightText.scroll === 1 || heightText.scroll === 0
                       ? darkMode
                         ? "inner-shadow-lightb"
                         : "inner-shadow-darkb"
@@ -146,8 +163,9 @@ function ProductDetail() {
                   (wi < 576
                     ? ""
                     : heightText.text > heightText.block
-                    ? heightText.scroll !== 0 &&
-                      heightText.text - heightText.block <
+                    ? heightText.scroll !== 1 &&
+                      heightText.scroll !== 0 &&
+                      heightText.text - heightText.block >
                         Math.floor(heightText.scroll) - 1
                       ? darkMode
                         ? "inner-shadow-lightt"
