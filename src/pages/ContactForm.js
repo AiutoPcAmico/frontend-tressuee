@@ -9,7 +9,7 @@ import { useContext } from "react";
 import "../App.css";
 import "./pages.css";
 import "./ContactForm.css";
-
+import logo from "../img/logo.png";
 const ContactForm = () => {
   //const { DarkMode } = useContext(DarkModeContext);
   //<h2 className={DarkMode ? "testolight" : "testodark"}>contatti</h2>
@@ -87,6 +87,7 @@ const Footer = () => {
       </h2>
       <div className={"footer " + (darkMode ? "sfondo2" : "sfondo1")}>
         <div className="text">
+          <img className="img" src={logo} alt=" " />
           <p> Abdelaziz Omar : front end </p>
           <p> Andrea Felappi : responsabile progetto / frontend </p>
           <p> Donadoni Lisa : frontend </p>

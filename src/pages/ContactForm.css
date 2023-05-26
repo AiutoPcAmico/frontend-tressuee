@@ -58,6 +58,7 @@
   align-items: center;
   box-sizing: border-box;
   font-family: italic;
+  
 }
 
 .credits {
@@ -72,6 +73,14 @@
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
+
+  .img {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    height: 50px;
+    object-fit: contain;
+    justify-self: end;
+  }
 }
 
 
