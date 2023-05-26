@@ -68,7 +68,7 @@
 }
 
 .text {
-  color: black;
+  /*color: black;*/
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
@@ -82,5 +82,4 @@
     justify-self: end;
   }
 }
-
 
