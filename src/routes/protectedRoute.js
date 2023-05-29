@@ -7,14 +7,13 @@ function ProtectedRoute({ children }) {
   const access = useSelector((state) => state.sessionInfo.sessionToken);
   const expireJWT = useSelector((state) => state.sessionInfo.sessionExpire);
   const dispatch = useDispatch();
-  //console.log(access);
   let location = useLocation();
 
   var expireDate = new Date(0);
   expireDate.setUTCSeconds(expireJWT);
-  console.log(expireDate);
+  //console.log(expireDate);
   const nowDate = new Date();
-  console.log(nowDate);
+  //console.log(nowDate);
 
   var expiredToken = false;
   if (nowDate.getTime() > expireDate.getTime()) {

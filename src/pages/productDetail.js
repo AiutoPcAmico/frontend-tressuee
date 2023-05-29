@@ -36,6 +36,13 @@ function ProductDetail() {
   });
   const idOfProduct = parseInt(params.id);
   const access = useSelector((state) => state.sessionInfo?.sessionToken);
+  const [image, setImage] = useState();
+
+  useEffect(() => {
+    try {
+      setImage(require(`../img/${product.image}`));
+    } catch (error) {}
+  }, [product.image]);
 
   useEffect(() => {
     retrieveSingleProduct(idOfProduct).then((element) => {
@@ -124,7 +131,7 @@ function ProductDetail() {
               >
                 <img
                   className="m-2"
-                  src={require(`../img/${product.image}`)}
+                  src={image}
                   alt={product.category + " logo"}
                   style={{ maxWidth: "100%" }}
                 ></img>

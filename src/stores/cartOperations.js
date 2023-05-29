@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { cartUpdateOnLogin } from "../api/indexTreessueApi";
 
 export const cartOperations = createSlice({
   name: "cart",
@@ -49,6 +50,20 @@ export const cartOperations = createSlice({
         state.listCart.splice(index, 1); // 2nd parameter means remove one item only
       }
     },
+
+    alignCart: (state, actions) => {
+      //function called to align backend cart to stored cart
+      cartUpdateOnLogin().then((response) => {
+        if (!response.isError) {
+          console.log("Carrello sincronizzato con successo!");
+          console.log(response.data)
+          state.listCart= response.data
+        } else {
+          console.error("Non è stato possibile sincronizzare il carrello. Errore:");
+          console.error(response.messageError)
+        }
+      })
+    }
   },
 });
 

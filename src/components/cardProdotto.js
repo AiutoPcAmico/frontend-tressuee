@@ -1,10 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../theme/DarkModeContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 function CardProdotto({ singleProduct, indice }) {
   const { darkMode } = useContext(DarkModeContext);
   const navigate = useNavigate();
+  const [image, setImage] = useState();
+
+  useEffect(() => {
+    try {
+      setImage(require(`../img/${singleProduct.image}`));
+    } catch (error) {}
+  }, [singleProduct.image]);
 
   function navigateToDetails(id) {
     navigate("/shop/productDetails/" + id);
@@ -29,10 +36,10 @@ function CardProdotto({ singleProduct, indice }) {
       }}
     >
       <img
-        src={require(`../img/${singleProduct.image}`)}
+        src={image}
         className="card-img-top mx-auto mt-1"
         alt={`${singleProduct.category} icon`}
-        style={{ width: "150px" }}
+        style={{ width: "150px", height: "150px" }}
       />
 
       <div className="card-body">

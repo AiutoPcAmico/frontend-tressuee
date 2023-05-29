@@ -6,7 +6,7 @@ import { retrieveUserOrders } from "../api/indexTreessueApi";
 const OrdersPage = ({ totalOrders }) => {
   const { darkMode } = useContext(DarkModeContext);
   const [orders, setOrders] = useState([]); //lista tutti prodotti
-  const [error, setError] = useState();
+  const [error, setError] = useState("Caricamento degli ordini in corso!");
 
   useEffect(() => {
     retrieveUserOrders().then((element) => {

@@ -1,12 +1,53 @@
 import { DarkModeContext } from "../theme/DarkModeContext";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import QuantitySelector from "./quantitySelector";
 import { removeItem, updateItem } from "../stores/cartOperations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeQuantityCart, deleteFromCart } from "../api/indexTreessueApi";
 
 function CardCarrello({ product, quantity }) {
   const { darkMode } = useContext(DarkModeContext);
   const dispatch = useDispatch();
+  const access = useSelector((state) => state.sessionInfo?.sessionToken);
+  const [image, setImage] = useState();
+
+  useEffect(() => {
+    try {
+      setImage(require(`../img/${product?.image}`));
+    } catch (error) {}
+  }, [product.image]);
+
+  function changeQuanityFromSelector(value) {
+    if (quantity !== value) {
+      if (access) {
+        //se loggato lo salvo sia in locale che tramite api nel DB
+        changeQuantityCart(product.id_product, quantity).then((element) => {
+          if (element.isError) {
+            console.error(
+              "Errore durante la sincronizzazione delle quantità col DB"
+            );
+            dispatch(
+              updateItem({
+                id: product.id_product,
+                quantity: value,
+              })
+            );
+          } else {
+            dispatch(
+              updateItem({
+                id: product.id_product,
+                quantity: value,
+              })
+            );
+            document.getElementById("buttonModal").click();
+          }
+        });
+      } else {
+        //dispatch(updateItem({ id: product.id, quantity: value }));
+        dispatch(updateItem({ id: product.id_product, quantity: value }));
+      }
+    }
+  }
 
   return (
     <div
@@ -16,7 +57,7 @@ function CardCarrello({ product, quantity }) {
       <div className="row no-gutters">
         <div className="col-md-4">
           <img
-            src={require(`../img/${product.image}`)}
+            src={image}
             className="card-img-top mx-auto mt-1"
             alt={`${product.category} icon`}
             style={{ width: "150px" }}
@@ -33,12 +74,7 @@ function CardCarrello({ product, quantity }) {
               <QuantitySelector
                 initialQuantity={quantity}
                 setUpperQuantity={(value) => {
-                  if (quantity !== value) {
-                    //dispatch(updateItem({ id: product.id, quantity: value }));
-                    dispatch(
-                      updateItem({ id: product.id_product, quantity: value })
-                    );
-                  }
+                  changeQuanityFromSelector(value);
                 }}
                 prodQuantity={product.available_quantity}
               ></QuantitySelector>
@@ -47,8 +83,20 @@ function CardCarrello({ product, quantity }) {
                 type="button"
                 className="btn btn-warning ml-1"
                 onClick={() => {
-                  //dispatch(removeItem({ id: product.id }));
-                  dispatch(removeItem({ id: product.id_product }));
+                  if (access) {
+                    //se loggato lo salvo sia in locale che tramite api nel DB
+                    deleteFromCart(product.id_product).then((element) => {
+                      if (element.isError) {
+                        //setError(element.messageError);
+                      } else {
+                        dispatch(removeItem({ id: product.id_product }));
+                        document.getElementById("buttonModal").click();
+                      }
+                    });
+                  } else {
+                    //dispatch(removeItem({ id: product.id }));
+                    dispatch(removeItem({ id: product.id_product }));
+                  }
                 }}
               >
                 <i className="bi bi-trash3"></i>

@@ -2,7 +2,7 @@ import { DarkModeContext } from "../theme/DarkModeContext";
 import { useContext, useEffect, useMemo, useState } from "react";
 import CardCarrello from "../components/cardCarrello";
 import { useSelector } from "react-redux";
-import { retrieveAllProducts } from "../api/indexTreessueApi";
+import { retrieveAllProducts, createOrder } from "../api/indexTreessueApi";
 
 const CartPage = ({ totalProducts }) => {
   const { darkMode } = useContext(DarkModeContext);
@@ -45,6 +45,17 @@ const CartPage = ({ totalProducts }) => {
 
     return price;
   }, [cart, products]);
+
+  function doShop() {
+    createOrder().then(
+      if (element.isError) {
+        setError(element.messageError);
+      } else {
+        setError("");
+        setProducts(element.data);
+      }
+    )
+  }
 
   return (
     <div>
@@ -118,13 +129,14 @@ const CartPage = ({ totalProducts }) => {
               </div>
               <p>
                 <button
+                  onClick={doShop}
                   type="button"
                   className={
                     "btn btn-outline-success " +
                     (darkMode ? "nav2buttonl" : "nav2button")
                   }
                 >
-                  acquista
+                  Acquista
                 </button>
               </p>
             </div>

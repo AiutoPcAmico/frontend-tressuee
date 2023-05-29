@@ -1,3 +1,4 @@
+import cartOperations from "../stores/cartOperations.js";
 import sessionInfo, { destroySession } from "../stores/sessionInfo.js";
 import { store } from "../stores/store.js";
 import axios from "./axios.js";
@@ -93,8 +94,8 @@ const registerUser = async (username, name, surname, password) => {
   try {
     const response = await axios.post("/user-registration/registerCustomer", {
       email: username,
-      firstName: name,
-      lastName: surname,
+      first_name: name,
+      last_name: surname,
       password: password,
     });
     return retrieveErrors(response.status, response.data);
@@ -138,37 +139,39 @@ async function retrievePublicTowers() {
 }
 
 async function retrieveUserOrders() {
-  var orders = { status: 200 };
-  orders.data = [
-    {
-      id_order: 1,
-      order_date: "Fazzoletti 10",
-      order_status: "in lavorazione",
-      courier_name: "poste italianeeeeeeee",
-      tracking_code: 10,
-      start_shipping_date: "",
-      expected_delivery_date: "",
-      delivery_data: "",
-      original_price: 10,
-      discount: 90,
-      price: 1,
-    },
-    {
-      id_order: 2,
-      order_date: "Fazzoletti 200",
-      order_status: "consegnato",
-      courier_name: "brt",
-      tracking_code: 11,
-      start_shipping_date: "",
-      expected_delivery_date: "",
-      delivery_data: "",
-      original_price: 100,
-      discount: 90,
-      price: 10,
-    },
-  ];
+  ///order/customerOrderList
+  const access = store.getState(sessionInfo).sessionInfo.sessionToken;
+
   try {
-    const response = orders;
+    const response = await axios.get("/order/customerOrderList", {
+      headers: {
+        Authorization: "Bearer " + access,
+      },
+    });
+
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.response.status, e.response.data.result);
+  }
+}
+
+async function createOrder() {
+  ///order/createOrder
+  const access = store.getState(sessionInfo).sessionInfo.sessionToken;
+  const cart = store.getState(cartOperations).cart.listCart;
+
+  try {
+    const response = await axios.post(
+      "/order/createOrder",
+      {
+        cart: cart,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + access,
+        },
+      }
+    );
 
     return retrieveErrors(response.status, response.data);
   } catch (e) {
@@ -207,6 +210,89 @@ async function saveIntoCart(idProduct, quantity) {
   }
 }
 
+async function deleteFromCart(idProduct) {
+  //usata se aggiunto un prodotto al carrello
+  //oopure
+  //utente non loggato con carrello logga
+  //let access = JSON.parse(localStorage.getItem("persist:root"));
+  //if (access !== null) access = JSON.parse(access.sessionInfo);
+
+  const access = store.getState(sessionInfo).sessionInfo.sessionToken;
+  try {
+    const response = await axios.delete(
+      "/cart-detail/delete-item/" + idProduct,
+      {
+        headers: {
+          Authorization: "Bearer " + access,
+        },
+      }
+    );
+
+    //todo aggiungere la quantity corretta
+
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.response.status, e.response.data.result);
+  }
+}
+
+async function changeQuantityCart(idProduct, quantity) {
+  //usata se aggiunto un prodotto al carrello
+  //oopure
+  //utente non loggato con carrello logga
+  //let access = JSON.parse(localStorage.getItem("persist:root"));
+  //if (access !== null) access = JSON.parse(access.sessionInfo);
+
+  const access = store.getState(sessionInfo).sessionInfo.sessionToken;
+  try {
+    const response = await axios.put(
+      "/cart-detail/change-quantity",
+      {
+        idProduct: idProduct,
+        quantity: quantity,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + access,
+        },
+      }
+    );
+
+    //todo aggiungere la quantity corretta
+
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.status, e.data);
+  }
+}
+
+async function cartUpdateOnLogin(cart) {
+  const access = store.getState(sessionInfo).sessionInfo.sessionToken;
+
+  try {
+    const pippo = await axios.post(
+      "/cart-detail/add",
+      { cart: cart },
+      {
+        headers: {
+          Authorization: "Bearer " + access,
+        },
+      }
+    );
+
+    const response = {
+      status: 200,
+      data: [{ cart }],
+    };
+
+    //todo aggiungere la quantity corretta
+
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.response.status, e.response.data.result);
+  }
+}
+
 export {
   postLogin,
   registerUser,
@@ -215,4 +301,8 @@ export {
   retrievePublicTowers,
   retrieveUserOrders,
   saveIntoCart,
+  createOrder,
+  cartUpdateOnLogin,
+  deleteFromCart,
+  changeQuantityCart,
 };
