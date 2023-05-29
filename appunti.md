@@ -2,7 +2,7 @@ ci serve chiamata in cui passiamo carrello ->merge return carrello completo
 
 quando salviamo nuovo prodotto in base a categoria salvare nome immagine altrimenti si rompe tutto
 
-
+a
 
 
 
