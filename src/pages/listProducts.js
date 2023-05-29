@@ -6,6 +6,8 @@ function ListProducts() {
   const [listProduct, setListProduct] = useState(null);
   const [error, setError] = useState("Caricamento in corso,\nAttendere prego!");
 
+  console.log(process.env.REACT_APP_BASE_URL)
+
   useEffect(() => {
     retrieveAllProducts().then((element) => {
       if (element.isError) {
