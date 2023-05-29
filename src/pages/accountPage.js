@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import prov from "../utils/province.json";
 import { useDispatch, useSelector } from "react-redux";
 import { destroySession, setSessionUser } from "../stores/sessionInfo";
+import { modifyUserDetail, modifyUserPass } from "../api/indexTreessueApi";
 
 //ciaooo
 function AccountPage() {
@@ -16,15 +17,17 @@ function AccountPage() {
   const { darkMode } = useContext(DarkModeContext);
   const [isOnModify, setIsOnModify] = useState(false);
   const [error, setError] = useState(null);
+  const [msgSuccess, setMsgSuccess] = useState(false);
   const [account, setAccount] = useState({
     email: user.email || "",
-    password: user.password || "",
-    firstName: user.firstName || "",
-    lastName: user.lastName || "",
-    phoneNumber: user.phoneNumber || "",
+    password: "",
+    passwordconferma: "",
+    first_name: user.first_name || "",
+    last_name: user.last_name || "",
+    phone_number: user.phone_number || "",
     address: user.address || "",
-    birthDate: user.birthDate || "", //data gg-mm-aaaa
-    zipCode: user.zipCode || "",
+    birth_date: user.birth_date || "", //data gg-mm-aaaa
+    zip_code: user.zip_code || "",
     city: user.city || "",
     province: user.province || "",
   });
@@ -43,15 +46,20 @@ function AccountPage() {
 
   useEffect(() => {
     setError(null);
-    if (!account.password) {
-      setError("Inserire la nuova (o vecchia) password");
+    if (account.passwordconferma !== "") {
+      if (account.password === "") {
+        setError("Inserire anche la vecchia password");
+      }
     }
 
-    if (!account.firstName || !account.lastName) {
+    if (!account.first_name || !account.last_name) {
       setError("Compilare il nome e il cognome!");
     }
 
-    if (account.phoneNumber.length > 0 && !isValidPhone(account.phoneNumber)) {
+    if (
+      account.phone_number.length > 0 &&
+      !isValidPhone(account.phone_number)
+    ) {
       setError("Numero di telefono non valido!");
     }
 
@@ -60,23 +68,40 @@ function AccountPage() {
     }
   }, [
     account.email,
-    account.phoneNumber,
-    account.firstName,
-    account.lastName,
+    account.phone_number,
+    account.first_name,
+    account.last_name,
     account.password,
+    account.passwordconferma,
   ]);
 
   const confirmSave = () => {
     console.log({ account });
+    setMsgSuccess(false);
 
-    if (
-      account.email &&
-      account.password &&
-      account.firstName &&
-      account.lastName
-    ) {
+    if (account.email && account.first_name && account.last_name) {
       if (error === null) {
         //chiamata di api di salvataggio
+
+        modifyUserDetail(account).then((element) => {
+          if (element.isError) {
+            setError(element.messageError);
+          } else {
+            setMsgSuccess(true);
+          }
+        });
+
+        if (account.password !== "" && account.passwordconferma !== "") {
+          modifyUserPass(account.password, account.passwordconferma).then(
+            (element) => {
+              if (element.isError) {
+                setError(element.messageError);
+              } else {
+                setMsgSuccess(true);
+              }
+            }
+          );
+        }
 
         //se corretto
         setIsOnModify(false);
@@ -173,12 +198,13 @@ function AccountPage() {
                           />
                         </div>
                       </div>
+
                       <div className="form-group row">
                         <label
                           htmlFor="passwordaccount"
                           className="col-md-3 col-form-label"
                         >
-                          Password*
+                          Nuova password
                         </label>
                         <div className="col-md-9">
                           <input
@@ -190,16 +216,46 @@ function AccountPage() {
                                 : "form-control"
                             }
                             id="passwordaccount"
-                            value={account.password}
+                            value={account.passwordconferma}
                             onChange={(el) => {
                               setAccount({
                                 ...account,
-                                password: el.target.value,
+                                passwordconferma: el.target.value,
                               });
                             }}
                           />
                         </div>
                       </div>
+
+                      {account.passwordconferma !== "" && (
+                        <div className="form-group row">
+                          <label
+                            htmlFor="passwordaccount"
+                            className="col-md-3 col-form-label"
+                          >
+                            Password Attuale*
+                          </label>
+                          <div className="col-md-9">
+                            <input
+                              type="password"
+                              disabled={!isOnModify}
+                              className={
+                                !isOnModify
+                                  ? "w-100" // "form-control-plaintext toglie sfondo ma responsive"
+                                  : "form-control"
+                              }
+                              id="passwordaccount"
+                              value={account.password}
+                              onChange={(el) => {
+                                setAccount({
+                                  ...account,
+                                  password: el.target.value,
+                                });
+                              }}
+                            />
+                          </div>
+                        </div>
+                      )}
                       <div className="form-group row">
                         <label
                           htmlFor="nomeaccount"
@@ -217,11 +273,11 @@ function AccountPage() {
                                 : "form-control"
                             }
                             id="nomeaccount"
-                            value={account.firstName}
+                            value={account.first_name}
                             onChange={(el) => {
                               setAccount({
                                 ...account,
-                                firstName: el.target.value,
+                                first_name: el.target.value,
                               });
                             }}
                           />
@@ -242,11 +298,11 @@ function AccountPage() {
                                 : "form-control"
                             }
                             id="cognomeaccount"
-                            value={account.lastName}
+                            value={account.last_name}
                             onChange={(el) => {
                               setAccount({
                                 ...account,
-                                lastName: el.target.value,
+                                last_name: el.target.value,
                               });
                             }}
                           />
@@ -281,11 +337,11 @@ function AccountPage() {
                               : "form-control"
                           }
                           id="telefonoaccount"
-                          value={account.phoneNumber}
+                          value={account.phone_number}
                           onChange={(el) => {
                             setAccount({
                               ...account,
-                              phoneNumber: el.target.value,
+                              phone_number: el.target.value,
                             });
                           }}
                         />
@@ -346,11 +402,11 @@ function AccountPage() {
                               .split("T")[0]
                           }
                           id="dataaccount"
-                          value={account.birthDate}
+                          value={account.birth_date}
                           onChange={(el) => {
                             setAccount({
                               ...account,
-                              birthDate: el.target.value,
+                              birth_date: el.target.value,
                             });
                           }}
                         />
@@ -372,11 +428,11 @@ function AccountPage() {
                               : "form-control"
                           }
                           id="capaccount"
-                          value={account.zipCode}
+                          value={account.zip_code}
                           onChange={(el) => {
                             setAccount({
                               ...account,
-                              zipCode: el.target.value,
+                              zip_code: el.target.value,
                             });
                           }}
                         />
@@ -433,34 +489,13 @@ function AccountPage() {
                             //se vuoto prende la prima in automatico
                             prov.map((p) => {
                               if (p.sigla === account.province) {
-                                return (
-                                  <option selected key={p.sigla}>
-                                    {p.sigla}
-                                  </option>
-                                );
+                                return <option key={p.sigla}>{p.sigla}</option>;
                               } else {
                                 return <option key={p.sigla}>{p.sigla}</option>;
                               }
                             })
                           }
                         </select>
-                        {/*<input
-                          type="text"
-                          disabled={!isOnModify}
-                          className={
-                            !isOnModify
-                              ? "form-control-plaintext"
-                              : "form-control"
-                          }
-                          id="provinciaaccount"
-                          value={account.province}
-                          onChange={(el) => {
-                            setAccount({
-                              ...account,
-                              province: el.target.value,
-                            });
-                          }}
-                        />*/}
                       </div>
                     </div>
                   </div>
@@ -491,13 +526,14 @@ function AccountPage() {
             {!!isOnModify && (
               <button
                 type="button"
+                disabled={!!error}
                 className={
                   "btn btn-outline-success mt-3 " +
                   (darkMode ? "nav2button" : "nav2buttonl")
                 }
                 onClick={confirmSave}
               >
-                <i clasNames="bi bi-check"></i>
+                <i className="bi bi-check"></i>
                 {" salva"}
               </button>
             )}
@@ -509,6 +545,12 @@ function AccountPage() {
                   <br></br>
                   <span>{error}</span>
                 </p>
+              </div>
+            )}
+
+            {msgSuccess && (
+              <div className="alert alert-success" role="alert">
+                Utenza modifica con successo!<br></br>Buon Shopping!
               </div>
             )}
 

@@ -1,14 +1,17 @@
 import { DarkModeContext } from "../theme/DarkModeContext";
 import { useContext, useEffect, useMemo, useState } from "react";
 import CardCarrello from "../components/cardCarrello";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { retrieveAllProducts, createOrder } from "../api/indexTreessueApi";
+import { deleteCart } from "../stores/cartOperations";
 
 const CartPage = ({ totalProducts }) => {
   const { darkMode } = useContext(DarkModeContext);
   const cart = useSelector((state) => state.cart.listCart); //prodoti nel carrello
   const [products, setProducts] = useState([]); //lista tutti prodotti
   const [error, setError] = useState("Caricamento dei dati in corso!");
+  const [msgOrder, setMsgOrder] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     retrieveAllProducts().then((element) => {
@@ -47,14 +50,16 @@ const CartPage = ({ totalProducts }) => {
   }, [cart, products]);
 
   function doShop() {
-    createOrder().then(
+    createOrder().then((element) => {
       if (element.isError) {
         setError(element.messageError);
       } else {
         setError("");
         setProducts(element.data);
+        dispatch(deleteCart());
+        setMsgOrder(true);
       }
-    )
+    });
   }
 
   return (
@@ -130,6 +135,7 @@ const CartPage = ({ totalProducts }) => {
               <p>
                 <button
                   onClick={doShop}
+                  disabled={!cart.length > 0}
                   type="button"
                   className={
                     "btn btn-outline-success " +
@@ -139,6 +145,13 @@ const CartPage = ({ totalProducts }) => {
                   Acquista
                 </button>
               </p>
+
+              {msgOrder && (
+                <div className="alert alert-success" role="alert">
+                  Ordine eseguito correttamente!<br></br>Riceverà presto una
+                  email con tutte le indicazioni circa il metodo di pagamento.
+                </div>
+              )}
             </div>
           </div>
         </div>

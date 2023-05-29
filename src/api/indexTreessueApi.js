@@ -48,6 +48,12 @@ function retrieveErrors(statusCode, data) {
         "L'utente indicato risulta già iscritto al portale.\nRiprova!";
       break;
 
+    case 418:
+      isError = true;
+      messageError =
+        "La quantità richiesta non è più disponibile. Ci scusiamo per il disagio";
+      break;
+
     case 426:
       isError = true;
       messageError =
@@ -103,6 +109,57 @@ const registerUser = async (username, name, surname, password) => {
     return retrieveErrors(e.response.status, e.response.data.result);
   }
 };
+//user-login/modifyUserDetail
+const modifyUserDetail = async (user) => {
+  const access = store.getState(sessionInfo).sessionInfo.sessionToken;
+
+  try {
+    const response = await axios.put(
+      "/user-login/modifyUserDetail",
+      {
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        phone_number: user.phone_number,
+        address: user.address,
+        birth_date: user.birth_date,
+        zip_code: user.zip_code,
+        city: user.city,
+        province: user.province,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + access,
+        },
+      }
+    );
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.response.status, e.response.data.result);
+  }
+};
+
+const modifyUserPass = async (pass, passnuova) => {
+  const access = store.getState(sessionInfo).sessionInfo.sessionToken;
+
+  try {
+    const response = await axios.put(
+      "/user-login/updateCredentials",
+      {
+        newPassword: passnuova,
+        oldPassword: pass,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + access,
+        },
+      }
+    );
+    return retrieveErrors(response.status, response.data);
+  } catch (e) {
+    return retrieveErrors(e.response.status, e.response.data.result);
+  }
+};
 
 async function retrieveAllProducts() {
   try {
@@ -148,7 +205,6 @@ async function retrieveUserOrders() {
         Authorization: "Bearer " + access,
       },
     });
-
     return retrieveErrors(response.status, response.data);
   } catch (e) {
     return retrieveErrors(e.response.status, e.response.data.result);
@@ -300,6 +356,8 @@ export {
   retrieveSingleProduct,
   retrievePublicTowers,
   retrieveUserOrders,
+  modifyUserDetail,
+  modifyUserPass,
   saveIntoCart,
   createOrder,
   cartUpdateOnLogin,

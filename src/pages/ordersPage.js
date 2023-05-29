@@ -10,13 +10,13 @@ const OrdersPage = ({ totalOrders }) => {
 
   useEffect(() => {
     retrieveUserOrders().then((element) => {
-      //console.log(element);
+      console.log(element);
       if (element.isError) {
         setError(element.messageError);
       } else {
         setError("");
         //console.log(element.data);
-        setOrders(element.data);
+        setOrders(element.data.result);
       }
     });
   }, []);

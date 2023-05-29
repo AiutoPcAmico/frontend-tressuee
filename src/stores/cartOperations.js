@@ -51,23 +51,31 @@ export const cartOperations = createSlice({
       }
     },
 
+    deleteCart: (state, actions) => {
+      state.listCart = [];
+      console.log("Carrello svuotato!");
+    },
+
     alignCart: (state, actions) => {
       //function called to align backend cart to stored cart
       cartUpdateOnLogin().then((response) => {
         if (!response.isError) {
           console.log("Carrello sincronizzato con successo!");
-          console.log(response.data)
-          state.listCart= response.data
+          console.log(response.data);
+          state.listCart = response.data;
         } else {
-          console.error("Non è stato possibile sincronizzare il carrello. Errore:");
-          console.error(response.messageError)
+          console.error(
+            "Non è stato possibile sincronizzare il carrello. Errore:"
+          );
+          console.error(response.messageError);
         }
-      })
-    }
+      });
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addItem, updateItem, removeItem } = cartOperations.actions;
+export const { addItem, updateItem, removeItem, deleteCart, alignCart } =
+  cartOperations.actions;
 
 export default cartOperations.reducer;

@@ -39,7 +39,6 @@ function CardCarrello({ product, quantity }) {
                 quantity: value,
               })
             );
-            document.getElementById("buttonModal").click();
           }
         });
       } else {
@@ -83,14 +82,16 @@ function CardCarrello({ product, quantity }) {
                 type="button"
                 className="btn btn-warning ml-1"
                 onClick={() => {
+                  dispatch(removeItem({ id: product.id_product }));
+
                   if (access) {
                     //se loggato lo salvo sia in locale che tramite api nel DB
                     deleteFromCart(product.id_product).then((element) => {
                       if (element.isError) {
                         //setError(element.messageError);
-                      } else {
-                        dispatch(removeItem({ id: product.id_product }));
-                        document.getElementById("buttonModal").click();
+                        console.error(
+                          "Si è verificato un errore durante  la delte del prodotto dal carrello contenuto nel db"
+                        );
                       }
                     });
                   } else {
