@@ -14,7 +14,7 @@ jobs:
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
           REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
         run: 
-          npm ci && npm install && CI=false && npm run build && echo REACT_APP_BASE_URL && echo ${{ secrets.REACT_APP_BASE_URL }}
+          npm ci && npm install && CI=false && npm run build && echo ${{ secrets.REACT_APP_BASE_U }}
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
