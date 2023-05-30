@@ -25,7 +25,7 @@ const ContactForm = () => {
           className={"mx-auto " + (darkMode ? "testolight" : "testodark")}
           style={{ width: "90%", textAlign: "center" }}
         >
-          contatti
+          Contatti
         </h2>
 
         <div className={"container " + (darkMode ? "sfondo2" : "sfondo1")}>
@@ -83,16 +83,31 @@ const Footer = () => {
         className={"mx-auto " + (darkMode ? "testolight" : "testodark")}
         style={{ width: "90%", textAlign: "center" }}
       >
-        credits
+        Credits
       </h2>
       <div className={"footer " + (darkMode ? "sfondo2" : "sfondo1")}>
         <div className="text">
           <img className="img" src={logo} alt=" " />
-          <p> Abdelaziz Omar : front end </p>
-          <p> Andrea Felappi : responsabile progetto / frontend </p>
-          <p> Donadoni Lisa : frontend </p>
-          <p> Cardillo Giaccomo: backend </p>
-          <p> Roman Davor : backend </p>
+          <p>
+            <b>Abdelaziz Omar</b> : Frontend Developer{" "}
+          </p>
+          <p>
+            {" "}
+            <b>Andrea Felappi</b> : Responsabile del Progetto e Frontend Logic
+            Developer{" "}
+          </p>
+          <p>
+            {" "}
+            <b>Lisa Donadoni</b> : Frontend GUI and Logic Developer{" "}
+          </p>
+          <p>
+            {" "}
+            <b>Cardillo Giacomo</b> : Backend Developer{" "}
+          </p>
+          <p>
+            {" "}
+            <b>Roman Davor</b> : Backend Developer{" "}
+          </p>
         </div>
       </div>
     </div>
