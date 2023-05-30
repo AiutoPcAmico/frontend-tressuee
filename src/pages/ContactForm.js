@@ -19,56 +19,58 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="credits">
-      <div className="aboutPage">
-        <h2
-          className={"mx-auto " + (darkMode ? "testolight" : "testodark")}
-          style={{ width: "90%", textAlign: "center" }}
-        >
-          Contatti
-        </h2>
+    <div className="contact-class">
+      <div className="credits">
+        <div className="aboutPage">
+          <h2
+            className={"mx-auto " + (darkMode ? "testolight" : "testodark")}
+            style={{ width: "90%", textAlign: "center" }}
+          >
+            Contatti
+          </h2>
 
-        <div className={"container " + (darkMode ? "sfondo2" : "sfondo1")}>
-          <div className="social-icons">
-            <div
-              className="social-icon"
-              onClick={() => handleClick("https://www.instagram.com")}
-            >
-              <img src={instagram} alt="Instagram" />
-              <span>Instagram</span>
-            </div>
-            <div
-              className="social-icon"
-              onClick={() => handleClick("https://www.facebook.com")}
-            >
-              <img src={facebook} alt="Facebook" />
-              <span>Facebook</span>
-            </div>
-            <div
-              className="social-icon"
-              onClick={() => handleClick("https://www.linkedin.com")}
-            >
-              <img src={linkedin} alt="LinkedIn" />
-              <span>LinkedIn</span>
-            </div>
-            <div
-              className="social-icon"
-              onClick={() => handleClick("https://www.gmail.com")}
-            >
-              <img src={gmail} alt="Gmail" />
-              <span>Gmail</span>
-            </div>
-            <div
-              className="social-icon"
-              onClick={() => handleClick("https://www.twitter.com")}
-            >
-              <img src={twitter} alt="Twitter" />
-              <span>Twitter</span>
+          <div className={"container " + (darkMode ? "sfondo2" : "sfondo1")}>
+            <div className="social-icons">
+              <div
+                className="social-icon"
+                onClick={() => handleClick("https://www.instagram.com")}
+              >
+                <img src={instagram} alt="Instagram" />
+                <span>Instagram</span>
+              </div>
+              <div
+                className="social-icon"
+                onClick={() => handleClick("https://www.facebook.com")}
+              >
+                <img src={facebook} alt="Facebook" />
+                <span>Facebook</span>
+              </div>
+              <div
+                className="social-icon"
+                onClick={() => handleClick("https://www.linkedin.com")}
+              >
+                <img src={linkedin} alt="LinkedIn" />
+                <span>LinkedIn</span>
+              </div>
+              <div
+                className="social-icon"
+                onClick={() => handleClick("https://www.gmail.com")}
+              >
+                <img src={gmail} alt="Gmail" />
+                <span>Gmail</span>
+              </div>
+              <div
+                className="social-icon"
+                onClick={() => handleClick("https://www.twitter.com")}
+              >
+                <img src={twitter} alt="Twitter" />
+                <span>Twitter</span>
+              </div>
             </div>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };
@@ -86,7 +88,7 @@ const Footer = () => {
         Credits
       </h2>
       <div className={"footer " + (darkMode ? "sfondo2" : "sfondo1")}>
-        <div className="text">
+        <div className="text_contacts">
           <img className="img" src={logo} alt=" " />
           <p>
             <b>Abdelaziz Omar</b> : Frontend Developer{" "}
