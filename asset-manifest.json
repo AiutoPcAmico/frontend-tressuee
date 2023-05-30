@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/frontend-tressuee/static/css/main.383ae813.css",
-    "main.js": "/frontend-tressuee/static/js/main.f43dfe5a.js",
+    "main.css": "/frontend-tressuee/static/css/main.703ebaa0.css",
+    "main.js": "/frontend-tressuee/static/js/main.5e97a125.js",
     "static/js/787.4991a26f.chunk.js": "/frontend-tressuee/static/js/787.4991a26f.chunk.js",
     "static/media/background.png": "/frontend-tressuee/static/media/background.ac774e6edbc44d033765.png",
     "static/media/maps_placeholder.png": "/frontend-tressuee/static/media/maps_placeholder.2bd7d4990d4340e7eca7.png",
@@ -15,16 +15,19 @@
     "static/media/banner_new.jpeg": "/frontend-tressuee/static/media/banner_new.58f88adf6357cd4aee89.jpeg",
     "static/media/user_placeholder.png": "/frontend-tressuee/static/media/user_placeholder.937919017231091f5cf4.png",
     "static/media/ricaricatore.png": "/frontend-tressuee/static/media/ricaricatore.96d43e2f4d181a0f92ad.png",
+    "static/media/instagram-icon.png": "/frontend-tressuee/static/media/instagram-icon.e403234cec2d4d1cf45c.png",
     "static/media/intero.png": "/frontend-tressuee/static/media/intero.af28f0ddd577a1a4e329.png",
     "static/media/scatoletta.png": "/frontend-tressuee/static/media/scatoletta.b7958f41e9596804f04f.png",
     "static/media/logo.png": "/frontend-tressuee/static/media/logo.280d1d37d7b0e515f47c.png",
+    "static/media/linkedin-icon.png": "/frontend-tressuee/static/media/linkedin-icon.c1cfa008b6e61c082c64.png",
+    "static/media/twitter-icon.png": "/frontend-tressuee/static/media/twitter-icon.3a655e8ba8a9efd824c5.png",
     "index.html": "/frontend-tressuee/index.html",
-    "main.383ae813.css.map": "/frontend-tressuee/static/css/main.383ae813.css.map",
-    "main.f43dfe5a.js.map": "/frontend-tressuee/static/js/main.f43dfe5a.js.map",
+    "main.703ebaa0.css.map": "/frontend-tressuee/static/css/main.703ebaa0.css.map",
+    "main.5e97a125.js.map": "/frontend-tressuee/static/js/main.5e97a125.js.map",
     "787.4991a26f.chunk.js.map": "/frontend-tressuee/static/js/787.4991a26f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.383ae813.css",
-    "static/js/main.f43dfe5a.js"
+    "static/css/main.703ebaa0.css",
+    "static/js/main.5e97a125.js"
   ]
 }
