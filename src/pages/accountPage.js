@@ -402,7 +402,13 @@ function AccountPage() {
                               .split("T")[0]
                           }
                           id="dataaccount"
-                          value={account.birth_date}
+                          value={
+                            account.birth_date
+                              ? new Date(account.birth_date)
+                                  .toISOString()
+                                  .split("T")[0]
+                              : ""
+                          }
                           onChange={(el) => {
                             setAccount({
                               ...account,
@@ -566,181 +572,6 @@ function AccountPage() {
                 Logout
               </button>
             </p>
-          </div>
-        </div>
-        I tuoi dispositivi
-        <div className="d-flex flex-wrap justify-content-center">
-          {/*listProduct.map((p, i) => {
-          return (
-            <CardProdotto
-              singleProduct={p}
-              indice={i}
-              key={p.id}
-            ></CardProdotto>
-          );
-        })*/}
-          <div
-            className={"card m-2 " + (darkMode ? "sfondocard2" : "sfondocard1")}
-            style={{ width: "18rem" }}
-            onClick={() => {
-              //navigateToDetails(singleProduct.id);
-            }}
-          >
-            <img
-              //src={getImage()}
-              className="card-img-top mx-auto mt-1"
-              alt={` icon`}
-              style={{ width: "150px" }}
-            />
-
-            <div className="card-body">
-              <h5 className="card-title">{/*singleProduct.name*/}nome</h5>
-              <p className="card-text small">
-                {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
-                tipo
-              </p>
-              <p className="card-text">se torre num fazzoletti?</p>
-
-              <button
-                className="btn btn-outline-success nav2button"
-                onClick={() => {
-                  //navigateToDetails(singleProduct.id);
-                }}
-              >
-                Visualizza i dettagli!
-              </button>
-            </div>
-          </div>
-          <div
-            className={"card m-2 " + (darkMode ? "sfondocard2" : "sfondocard1")}
-            style={{ width: "18rem" }}
-            onClick={() => {
-              //navigateToDetails(singleProduct.id);
-            }}
-          >
-            <img
-              //src={getImage()}
-              className="card-img-top mx-auto mt-1"
-              alt={` icon`}
-              style={{ width: "150px" }}
-            />
-
-            <div className="card-body">
-              <h5 className="card-title">
-                {/*singleProduct.name*/}nome pagina per
-                modifica?????????????????????????????????????
-              </h5>
-              <p className="card-text small">
-                {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
-                tipo
-              </p>
-              <p className="card-text">Affrettati!</p>
-
-              <button
-                className="btn btn-outline-success nav2button"
-                onClick={() => {
-                  //navigateToDetails(singleProduct.id);
-                }}
-              >
-                Visualizza i dettagli!
-              </button>
-            </div>
-          </div>
-          <div
-            className={"card m-2 " + (darkMode ? "sfondocard2" : "sfondocard1")}
-            style={{ width: "18rem" }}
-            onClick={() => {
-              //navigateToDetails(singleProduct.id);
-            }}
-          >
-            <img
-              //src={getImage()}
-              className="card-img-top mx-auto mt-1"
-              alt={` icon`}
-              style={{ width: "150px" }}
-            />
-
-            <div className="card-body">
-              <h5 className="card-title">{/*singleProduct.name*/}nome dato</h5>
-              <p className="card-text small">
-                {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
-                tipo articolo
-              </p>
-              <p className="card-text">se si tiene colori alternati</p>
-
-              <button
-                className="btn btn-outline-success nav2button"
-                onClick={() => {
-                  //navigateToDetails(singleProduct.id);
-                }}
-              >
-                Visualizza i dettagli!
-              </button>
-            </div>
-          </div>
-          <div
-            className={"card m-2 " + (darkMode ? "sfondocard2" : "sfondocard1")}
-            style={{ width: "18rem" }}
-            onClick={() => {
-              //navigateToDetails(singleProduct.id);
-            }}
-          >
-            <img
-              //src={getImage()}
-              className="card-img-top mx-auto mt-1"
-              alt={` icon`}
-              style={{ width: "150px" }}
-            />
-
-            <div className="card-body">
-              <h5 className="card-title">{/*singleProduct.name*/}nome</h5>
-              <p className="card-text small">
-                {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
-                tipo
-              </p>
-              <p className="card-text">La spedizione gratuita!</p>
-
-              <button
-                className="btn btn-outline-success nav2button"
-                onClick={() => {
-                  //navigateToDetails(singleProduct.id);
-                }}
-              >
-                Visualizza i dettagli!
-              </button>
-            </div>
-          </div>
-          <div
-            className={"card m-2 " + (darkMode ? "sfondocard2" : "sfondocard1")}
-            style={{ width: "18rem" }}
-            onClick={() => {
-              //navigateToDetails(singleProduct.id);
-            }}
-          >
-            <img
-              //src={getImage()}
-              className="card-img-top mx-auto mt-1"
-              alt="pippo"
-              style={{ width: "150px" }}
-            />
-
-            <div className="card-body">
-              <h5 className="card-title">{/*singleProduct.name*/}nome</h5>
-              <p className="card-text">
-                {/*(Math.round(singleProduct.unitPrice * 100) / 100).toFixed(2)*/}{" "}
-                tipo
-              </p>
-              <p className="card-text">Affrettati! La spedizione è gratuita!</p>
-
-              <button
-                className="btn btn-outline-success nav2button"
-                onClick={() => {
-                  //navigateToDetails(singleProduct.id);
-                }}
-              >
-                Visualizza i dettagli!
-              </button>
-            </div>
           </div>
         </div>
       </div>
